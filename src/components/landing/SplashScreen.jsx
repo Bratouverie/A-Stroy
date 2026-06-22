@@ -38,6 +38,7 @@ export default function SplashScreen({ onComplete }) {
             ref={videoRef}
             src={SPLASH_VIDEO}
             autoPlay
+            muted
             playsInline
             className="w-[min(80vw,480px)] h-auto"
             onEnded={handleClose}
