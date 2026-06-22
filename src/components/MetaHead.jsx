@@ -17,7 +17,7 @@ const SITE_NAME = "А СТРОЙ";
 const _socialVariant = getRandomSocialVariant();
 const DEFAULT_DESC = _socialVariant.text;
 const DEFAULT_OG = _socialVariant.image;
-const BASE_URL = "https://a-stroy.ru";
+const BASE_URL = typeof window !== 'undefined' ? window.location.origin : '';
 
 function setMeta(attr, key, content) {
   if (!content) return;
