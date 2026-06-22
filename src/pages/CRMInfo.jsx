@@ -44,9 +44,9 @@ export default function CRMInfo() {
               <div>
                 <h2 className="text-[#F5F5F5] font-semibold mb-1">Как войти?</h2>
                 <ol className="list-decimal list-inside space-y-2 text-[#A0A0A0] text-sm">
-                  <li>Нажмите кнопку «Вход» в верхнем меню</li>
-                  <li>Введите email и пароль, выданные администратором</li>
-                  <li>После входа перейдите на <code className="text-[#D4AF37]">/crm</code> для доступа к панели</li>
+                  <li>Нажмите кнопку «Войти в панель управления» ниже</li>
+                  <li>Введите секретный код, выданный администратором</li>
+                  <li>После ввода кода вы получите доступ к панели CRM</li>
                 </ol>
               </div>
             </div>
@@ -71,7 +71,7 @@ export default function CRMInfo() {
         </div>
 
         <div className="mt-10 text-center">
-          <Link to="/login" className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-[#D4AF37] to-[#FFD700] text-[#0F1419] font-semibold rounded-lg hover:shadow-[0_0_30px_rgba(212,175,55,0.4)] transition-all">
+          <Link to="/crm-login" className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-[#D4AF37] to-[#FFD700] text-[#0F1419] font-semibold rounded-lg hover:shadow-[0_0_30px_rgba(212,175,55,0.4)] transition-all">
             <Lock size={18} /> Войти в панель управления
           </Link>
         </div>

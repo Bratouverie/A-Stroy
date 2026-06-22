@@ -27,8 +27,13 @@ import Reports from './pages/crm/Reports';
 import CRMSettings from './pages/crm/Settings';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import CRMInfo from './pages/CRMInfo';
+import Reviews from './pages/Reviews';
+import CRMCodeLogin from './pages/CRMCodeLogin';
+import CRMAdminPanel from './pages/CRMAdminPanel';
+import ProtectedCRMRoute from '@/components/ProtectedCRMRoute';
 import ProtectedRoute from '@/components/ProtectedRoute';
-import { Navigate } from 'react-router-dom';
+import ChatBotWidget from '@/components/chatbot/ChatBotWidget';
+import { Navigate, useLocation } from 'react-router-dom';
 
 const AuthenticatedApp = () => {
   const { isLoadingAuth, isLoadingPublicSettings, authError, navigateToLogin } = useAuth();
@@ -69,17 +74,18 @@ const AuthenticatedApp = () => {
       <Route path="/contacts" element={<Contacts />} />
       <Route path="/privacy-policy" element={<PrivacyPolicy />} />
       <Route path="/crm-info" element={<CRMInfo />} />
+      <Route path="/reviews" element={<Reviews />} />
 
-      {/* CRM */}
-      <Route element={<ProtectedRoute unauthenticatedElement={<Navigate to="/login" replace />} />}>
-        <Route element={<CRMLayout />}>
-          <Route path="/crm" element={<Dashboard />} />
-          <Route path="/crm/leads" element={<LeadsManagement />} />
-          <Route path="/crm/projects" element={<ProjectsManagement />} />
-          <Route path="/crm/tasks" element={<TasksBoard />} />
-          <Route path="/crm/reports" element={<Reports />} />
-          <Route path="/crm/settings" element={<CRMSettings />} />
-        </Route>
+      {/* CRM — code-based auth */}
+      <Route path="/crm-login" element={<CRMCodeLogin />} />
+      <Route path="/crm-admin" element={<ProtectedCRMRoute requiredRole="admin"><CRMAdminPanel /></ProtectedCRMRoute>} />
+      <Route element={<ProtectedCRMRoute><CRMLayout /></ProtectedCRMRoute>}>
+        <Route path="/crm" element={<Dashboard />} />
+        <Route path="/crm/leads" element={<LeadsManagement />} />
+        <Route path="/crm/projects" element={<ProjectsManagement />} />
+        <Route path="/crm/tasks" element={<TasksBoard />} />
+        <Route path="/crm/reports" element={<Reports />} />
+        <Route path="/crm/settings" element={<CRMSettings />} />
       </Route>
 
       <Route path="*" element={<PageNotFound />} />
@@ -94,6 +100,7 @@ function App() {
         <Router>
           <ScrollToTop />
           <AuthenticatedApp />
+          <ChatBotWidget />
         </Router>
         <Toaster />
       </QueryClientProvider>

@@ -5,7 +5,8 @@ import PublicLayout from "@/components/layout/PublicLayout";
 import MetaHead from "@/components/MetaHead";
 import { serviceSchema } from "@/lib/schema";
 import { Link } from "react-router-dom";
-import { SERVICES_PAGE } from "@/lib/images";
+import { SERVICES_PAGE, PORTFOLIO_FEATURED } from "@/lib/images";
+import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 
 const SERVICES = [
   {
@@ -84,10 +85,17 @@ export default function Services() {
                 viewport={{ once: true }}
                 className="w-full lg:w-1/2"
               >
-                <div className="relative group overflow-hidden rounded-2xl">
-                  <img src={s.image} alt={s.title} className="w-full h-[300px] lg:h-[400px] object-cover group-hover:scale-105 transition-transform duration-700" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0F1419]/60 to-transparent" />
-                </div>
+                {s.title === "Ремонт дачного дома" ? (
+                  <div>
+                    <p className="text-sm text-[#D4AF37] mb-3 text-center">👈 Потяните для сравнения «до» и «после»</p>
+                    <BeforeAfterSlider beforeUrl={PORTFOLIO_FEATURED[2]} afterUrl={PORTFOLIO_FEATURED[5]} />
+                  </div>
+                ) : (
+                  <div className="relative group overflow-hidden rounded-2xl">
+                    <img src={s.image} alt={s.title} className="w-full h-[300px] lg:h-[400px] object-cover group-hover:scale-105 transition-transform duration-700" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0F1419]/60 to-transparent" />
+                  </div>
+                )}
               </motion.div>
               <motion.div
                 initial={{ opacity: 0, x: i % 2 === 0 ? 30 : -30 }}

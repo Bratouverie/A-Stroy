@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link, useLocation } from "react-router-dom";
-import { LayoutDashboard, Users, FolderKanban, CheckSquare, BarChart3, Settings, Building2, ChevronLeft, ChevronRight } from "lucide-react";
+import { LayoutDashboard, Users, FolderKanban, CheckSquare, BarChart3, Settings, UserCog, ChevronLeft, ChevronRight } from "lucide-react";
 import { LOGO } from "@/lib/images";
+import { crm_auth } from "@/lib/crm-auth";
 
 const NAV_ITEMS = [
   { icon: LayoutDashboard, label: "Дашборд", path: "/crm" },
@@ -58,6 +59,19 @@ export default function CRMSidebar({ isOpen, onToggle }) {
         >
           {isOpen ? <ChevronLeft size={14} /> : <ChevronRight size={14} />}
         </button>
+
+        <div className="absolute bottom-0 left-0 right-0 p-3 border-t border-[#D4AF37]/10">
+          {crm_auth.getUserRole() === "admin" && (
+            <Link to="/crm-admin" className={`flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors mb-1 ${location.pathname === "/crm-admin" ? "bg-[#D4AF37]/10 text-[#D4AF37]" : "text-[#A0A0A0] hover:bg-[#1A1F2E] hover:text-[#F5F5F5]"}`}>
+              <UserCog size={20} className="flex-shrink-0" />
+              {isOpen && <span className="text-sm font-medium">Сотрудники</span>}
+            </Link>
+          )}
+          <button onClick={() => { crm_auth.logout(); window.location.href = "/crm-login"; }} className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#A0A0A0] hover:bg-red-500/10 hover:text-red-400 transition-colors w-full">
+            <ChevronLeft size={20} className="flex-shrink-0" />
+            {isOpen && <span className="text-sm font-medium">Выйти</span>}
+          </button>
+        </div>
       </aside>
     </>
   );

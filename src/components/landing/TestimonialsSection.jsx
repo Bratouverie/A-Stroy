@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Star, Plus } from "lucide-react";
 import { TESTIMONIALS } from "@/lib/images";
@@ -17,7 +18,7 @@ export default function TestimonialsSection() {
   const [dbReviews, setDbReviews] = useState([]);
 
   useEffect(() => {
-    base44.entities.Review.filter({ status: "approved" }, "-created_date", 10)
+    base44.entities.Review.filter({ status: "published" }, "-created_date", 10)
       .then(reviews => setDbReviews(reviews))
       .catch(() => {});
   }, []);
@@ -143,6 +144,9 @@ export default function TestimonialsSection() {
             >
               <Plus size={16} /> Написать отзыв
             </button>
+            <Link to="/reviews" className="mt-3 block text-[#D4AF37]/80 text-sm font-medium hover:text-[#D4AF37] transition-colors">
+              Посмотреть все отзывы →
+            </Link>
           </motion.div>
         </div>
       </div>

@@ -1,5 +1,6 @@
 import React from "react";
-import { Menu, Bell, Search, Phone } from "lucide-react";
+import { Menu, Bell, Search, Phone, LogOut } from "lucide-react";
+import { crm_auth } from "@/lib/crm-auth";
 
 export default function CRMHeader({ user, onToggleSidebar }) {
   return (
@@ -35,6 +36,9 @@ export default function CRMHeader({ user, onToggleSidebar }) {
             <p className="text-sm font-medium text-[#F5F5F5]">{user?.full_name || "Администратор"}</p>
             <p className="text-xs text-[#A0A0A0]">{user?.role === "admin" ? "Администратор" : "Сотрудник"}</p>
           </div>
+          <button onClick={() => { crm_auth.logout(); window.location.href = "/crm-login"; }} className="w-9 h-9 flex items-center justify-center rounded-lg bg-[#1A1F2E] text-[#A0A0A0] hover:text-red-400 transition-colors" title="Выйти">
+            <LogOut size={18} />
+          </button>
         </div>
       </div>
     </header>

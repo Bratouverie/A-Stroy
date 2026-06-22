@@ -1,5 +1,6 @@
 // All extracted image URLs organized by block
-export const LOGO = "https://media.base44.com/images/public/user_69f4a60c5f6a1719d380566c/e381dbb0d_IMG_1953.PNG";
+export const LOGO = "https://media.base44.com/images/public/6a3932933a1d1c3db9682aa7/f2be5dcbf_Logo_mini_nofon.png";
+export const LOGO_FAVICON = LOGO;
 export const SPLASH_VIDEO = "https://media.base44.com/videos/public/user_69f4a60c5f6a1719d380566c/975a826e9_video-1782127342467.webm";
 
 // Block 1.2 - Hero Banner (from archive 1-1)

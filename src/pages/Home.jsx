@@ -11,7 +11,6 @@ import TestimonialsSection from "@/components/landing/TestimonialsSection";
 import CalculatorSection from "@/components/landing/CalculatorSection";
 import CTASection from "@/components/landing/CTASection";
 import Footer from "@/components/landing/Footer";
-import ChatBotWidget from "@/components/chatbot/ChatBotWidget";
 import VisitorCounter from "@/components/VisitorCounter";
 import MetaHead from "@/components/MetaHead";
 import { organizationSchema, localBusinessSchema } from "@/lib/schema";
@@ -44,7 +43,6 @@ export default function Home() {
           <CalculatorSection />
           <CTASection />
           <Footer />
-          <ChatBotWidget />
           <VisitorCounter />
         </>
       )}
