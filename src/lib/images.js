@@ -1,6 +1,13 @@
 // All extracted image URLs organized by block
-export const LOGO = "https://media.base44.com/images/public/6a3932933a1d1c3db9682aa7/f2be5dcbf_Logo_mini_nofon.png";
+export const LOGO = "https://media.base44.com/images/public/6a3932933a1d1c3db9682aa7/b2f35a56a_Logo2.png";
 export const LOGO_FAVICON = LOGO;
+
+// Social media share banners (randomized)
+export const SOCIAL_BANNERS = [
+  "https://media.base44.com/images/public/6a3932933a1d1c3db9682aa7/b232b794c_Luxury_interior_design_scene_showing_an_elegant_we-1782142241629.png",
+  "https://media.base44.com/images/public/6a3932933a1d1c3db9682aa7/dea745cc5_Remove_all_text_phone_numbers_and_any_written_co-1782142206310.png",
+  "https://media.base44.com/images/public/6a3932933a1d1c3db9682aa7/a296ae452_Wealthy_business_professional_client_gazing_in_del-1782142246171.png",
+];
 export const SPLASH_VIDEO = "https://media.base44.com/videos/public/user_69f4a60c5f6a1719d380566c/975a826e9_video-1782127342467.webm";
 
 // Block 1.2 - Hero Banner (from archive 1-1)

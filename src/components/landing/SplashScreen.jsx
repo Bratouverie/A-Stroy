@@ -31,7 +31,7 @@ export default function SplashScreen({ onComplete }) {
           exit={{ opacity: 0, filter: "blur(10px)" }}
           transition={{ duration: 0.6 }}
           className="fixed inset-0 z-[9999] flex items-center justify-center cursor-pointer"
-          style={{ background: "linear-gradient(135deg, #0A0E27 0%, #1a1a2e 100%)" }}
+          style={{ background: "#1A1A1A" }}
           onClick={handleClose}
         >
           <video
@@ -39,7 +39,7 @@ export default function SplashScreen({ onComplete }) {
             src={SPLASH_VIDEO}
             autoPlay
             playsInline
-            className="w-[min(80vw,480px)] h-auto"
+            className="w-full max-w-3xl h-auto object-contain"
             onEnded={handleClose}
           />
           <button

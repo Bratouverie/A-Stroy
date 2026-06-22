@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { getRandomSocialBanner } from "@/lib/social-templates";
 
 /**
  * MetaHead — manages document head meta tags for SEO, OpenGraph, Twitter Cards, and JSON-LD schema.
@@ -14,7 +15,7 @@ import { useEffect } from "react";
  */
 const SITE_NAME = "А СТРОЙ";
 const DEFAULT_DESC = "Премиум ремонт и отделка квартир, домов и коттеджей под ключ в Москве и МО. Площадь 40-900 кв.м, бюджет от 1 млн ₽. Гарантия 5-7 лет.";
-const DEFAULT_OG = "https://media.base44.com/images/public/user_69f4a60c5f6a1719d380566c/e381dbb0d_IMG_1953.PNG";
+const DEFAULT_OG = getRandomSocialBanner();
 const BASE_URL = "https://a-stroy.ru";
 
 function setMeta(attr, key, content) {

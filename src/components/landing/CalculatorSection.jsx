@@ -146,7 +146,13 @@ export default function CalculatorSection() {
                   </div>
                   <div className="p-2 bg-[#0F1419]/50 rounded-lg">
                     <p className="text-[#A0A0A0]">Сроки</p>
-                    <p className="font-semibold text-[#D4AF37]">{area < 100 ? "2-3" : area < 300 ? "3-4" : "4-6"} мес</p>
+                    <p className="font-semibold text-[#D4AF37]">{(() => {
+                      const base = area < 100 ? "2-3" : area < 300 ? "3-4" : "4-6";
+                      if (timeline === "expedited") {
+                        return area < 100 ? "1-2" : area < 300 ? "2-3" : "3-4";
+                      }
+                      return base;
+                    })()} мес</p>
                   </div>
                 </div>
 
