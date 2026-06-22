@@ -1,0 +1,74 @@
+{
+  "name": "Project",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "title": "\u041d\u0430\u0437\u0432\u0430\u043d\u0438\u0435"
+    },
+    "leadId": {
+      "type": "string",
+      "title": "ID \u0437\u0430\u044f\u0432\u043a\u0438"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "apartment",
+        "house",
+        "cottage",
+        "dacha"
+      ],
+      "default": "apartment",
+      "title": "\u0422\u0438\u043f"
+    },
+    "area": {
+      "type": "number",
+      "title": "\u041f\u043b\u043e\u0449\u0430\u0434\u044c"
+    },
+    "address": {
+      "type": "string",
+      "title": "\u0410\u0434\u0440\u0435\u0441"
+    },
+    "budget": {
+      "type": "number",
+      "title": "\u0411\u044e\u0434\u0436\u0435\u0442"
+    },
+    "startDate": {
+      "type": "string",
+      "format": "date",
+      "title": "\u0414\u0430\u0442\u0430 \u043d\u0430\u0447\u0430\u043b\u0430"
+    },
+    "plannedEndDate": {
+      "type": "string",
+      "format": "date",
+      "title": "\u041f\u043b\u0430\u043d. \u0434\u0430\u0442\u0430 \u043e\u043a\u043e\u043d\u0447\u0430\u043d\u0438\u044f"
+    },
+    "actualEndDate": {
+      "type": "string",
+      "format": "date",
+      "title": "\u0424\u0430\u043a\u0442. \u0434\u0430\u0442\u0430 \u043e\u043a\u043e\u043d\u0447\u0430\u043d\u0438\u044f"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "in_progress",
+        "paused",
+        "completed",
+        "delayed"
+      ],
+      "default": "in_progress",
+      "title": "\u0421\u0442\u0430\u0442\u0443\u0441"
+    },
+    "currentStage": {
+      "type": "string",
+      "title": "\u0422\u0435\u043a\u0443\u0449\u0438\u0439 \u044d\u0442\u0430\u043f"
+    },
+    "description": {
+      "type": "string",
+      "title": "\u041e\u043f\u0438\u0441\u0430\u043d\u0438\u0435"
+    }
+  },
+  "required": [
+    "name"
+  ]
+}

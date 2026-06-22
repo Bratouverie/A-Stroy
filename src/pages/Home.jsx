@@ -11,6 +11,7 @@ import TestimonialsSection from "@/components/landing/TestimonialsSection";
 import CalculatorSection from "@/components/landing/CalculatorSection";
 import CTASection from "@/components/landing/CTASection";
 import Footer from "@/components/landing/Footer";
+import ChatBotWidget from "@/components/chatbot/ChatBotWidget";
 
 export default function Home() {
   const [splashDone, setSplashDone] = useState(

@@ -1,0 +1,50 @@
+{
+  "name": "Task",
+  "type": "object",
+  "properties": {
+    "projectId": {
+      "type": "string",
+      "title": "ID \u043f\u0440\u043e\u0435\u043a\u0442\u0430"
+    },
+    "leadId": {
+      "type": "string",
+      "title": "ID \u0437\u0430\u044f\u0432\u043a\u0438"
+    },
+    "title": {
+      "type": "string",
+      "title": "\u041d\u0430\u0437\u0432\u0430\u043d\u0438\u0435"
+    },
+    "description": {
+      "type": "string",
+      "title": "\u041e\u043f\u0438\u0441\u0430\u043d\u0438\u0435"
+    },
+    "dueDate": {
+      "type": "string",
+      "format": "date",
+      "title": "\u0421\u0440\u043e\u043a"
+    },
+    "priority": {
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high"
+      ],
+      "default": "medium",
+      "title": "\u041f\u0440\u0438\u043e\u0440\u0438\u0442\u0435\u0442"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "todo",
+        "in_progress",
+        "done"
+      ],
+      "default": "todo",
+      "title": "\u0421\u0442\u0430\u0442\u0443\u0441"
+    }
+  },
+  "required": [
+    "title"
+  ]
+}

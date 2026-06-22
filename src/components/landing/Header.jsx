@@ -4,10 +4,11 @@ import { LOGO } from "@/lib/images";
 import { Link } from "react-router-dom";
 
 const NAV = [
-  { label: "Услуги", href: "#services" },
-  { label: "Портфолио", href: "#portfolio" },
-  { label: "О нас", href: "#about" },
-  { label: "Контакты", href: "#contacts" },
+  { label: "Услуги", to: "/services" },
+  { label: "Портфолио", to: "/portfolio" },
+  { label: "О нас", to: "/about" },
+  { label: "Блог", to: "/blog" },
+  { label: "Контакты", to: "/contacts" },
 ];
 
 export default function Header() {
@@ -47,13 +48,13 @@ export default function Header() {
           {/* Desktop Nav */}
           <nav className="hidden lg:flex items-center gap-8">
             {NAV.map(n => (
-              <button
+              <Link
                 key={n.label}
-                onClick={() => scrollTo(n.href)}
+                to={n.to}
                 className="text-sm font-medium text-[#A0A0A0] hover:text-[#D4AF37] transition-colors tracking-wide"
               >
                 {n.label}
-              </button>
+              </Link>
             ))}
           </nav>
 
@@ -69,12 +70,12 @@ export default function Header() {
               <Phone size={14} />
               <span>8(495)123-45-67</span>
             </a>
-            <button
-              onClick={() => scrollTo("#contacts")}
+            <Link
+              to="/contacts"
               className="hidden sm:block px-5 py-2.5 bg-gradient-to-r from-[#D4AF37] to-[#FFD700] text-[#0F1419] text-sm font-semibold rounded-lg hover:shadow-[0_0_20px_rgba(212,175,55,0.3)] transition-all"
             >
               Консультация
-            </button>
+            </Link>
             <button onClick={() => setMenuOpen(!menuOpen)} className="lg:hidden text-[#F5F5F5] p-2">
               {menuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -87,7 +88,7 @@ export default function Header() {
         <div className="lg:hidden bg-[#0F1419]/95 backdrop-blur-xl border-t border-[#D4AF37]/20 pb-6">
           <div className="px-6 pt-4 space-y-4">
             {NAV.map(n => (
-              <button key={n.label} onClick={() => scrollTo(n.href)} className="block w-full text-left text-lg text-[#F5F5F5] hover:text-[#D4AF37]">{n.label}</button>
+              <Link key={n.label} to={n.to} onClick={() => setMenuOpen(false)} className="block w-full text-left text-lg text-[#F5F5F5] hover:text-[#D4AF37]">{n.label}</Link>
             ))}
             <div className="flex gap-3 pt-4">
               <a href="https://wa.me/" className="flex w-10 h-10 items-center justify-center rounded-full border border-[#D4AF37]/30 text-[#D4AF37]">
@@ -100,7 +101,7 @@ export default function Header() {
                 <Phone size={18} />
               </a>
             </div>
-            <button onClick={() => scrollTo("#contacts")} className="w-full px-5 py-3 bg-gradient-to-r from-[#D4AF37] to-[#FFD700] text-[#0F1419] font-semibold rounded-lg">Консультация</button>
+            <Link to="/contacts" className="w-full px-5 py-3 bg-gradient-to-r from-[#D4AF37] to-[#FFD700] text-[#0F1419] font-semibold rounded-lg text-center">Консультация</Link>
           </div>
         </div>
       )}
