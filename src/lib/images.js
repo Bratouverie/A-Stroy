@@ -41,6 +41,7 @@ export const TESTIMONIALS = [
   "https://base44.app/api/apps/6a3932933a1d1c3db9682aa7/files/mp/public/6a3932933a1d1c3db9682aa7/cba2ee35f_Happy_middle-aged_Russian_couple_in_their_newly_re-1782102849081.png",
   "https://base44.app/api/apps/6a3932933a1d1c3db9682aa7/files/mp/public/6a3932933a1d1c3db9682aa7/c27554ec4_Real_before_and_after_split-screen_vertical_compar-1782102857408.png",
   "https://base44.app/api/apps/6a3932933a1d1c3db9682aa7/files/mp/public/6a3932933a1d1c3db9682aa7/9de6df098_Satisfied_Russian_client_in_their_renovated_Moscow-1782102851888.png",
+  "https://base44.app/api/apps/6a3932933a1d1c3db9682aa7/files/mp/public/6a3932933a1d1c3db9682aa7/e8ea5bc6d_Professional_headshot_portrait_of_confident_Russia-1782122060155.png",
 ];
 
 // Services page images
@@ -82,4 +83,18 @@ export const BLOG = [
   "https://base44.app/api/apps/6a3932933a1d1c3db9682aa7/files/mp/public/6a3932933a1d1c3db9682aa7/4f2f5349e_Professional_flat-lay_composition_of_renovation_pl-1782123186912.png",
   "https://base44.app/api/apps/6a3932933a1d1c3db9682aa7/files/mp/public/6a3932933a1d1c3db9682aa7/e480c1de0_Professional_mood_board_flat-lay_showcasing_2024_i-1782123195941.png",
   "https://base44.app/api/apps/6a3932933a1d1c3db9682aa7/files/mp/public/6a3932933a1d1c3db9682aa7/75aff6d6b_Educational_comparison_flat-lay_showing_budget_ver-1782123206360.png",
+];
+
+// ChatBot persona avatars
+export const AVATAR_MARIA = "https://base44.app/api/apps/6a3932933a1d1c3db9682aa7/files/mp/public/6a3932933a1d1c3db9682aa7/27c64cee0_Professional_portrait_of_talented_Russian_female_i-1782122066648.png";
+export const AVATAR_ARTEM = "https://base44.app/api/apps/6a3932933a1d1c3db9682aa7/files/mp/public/6a3932933a1d1c3db9682aa7/49f1344d3_Professional_portrait_of_creative_Russian_male_int-1782122064450.png";
+
+// Services images matched to landing grid service titles
+export const SERVICES_LANDING = [
+  SERVICES_PAGE.fullRenovation,
+  SERVICES_PAGE.finishing,
+  SERVICES_PAGE.dacha,
+  SERVICES_PAGE.cottage,
+  SERVICES_PAGE.design,
+  WHY_US[3],
 ];

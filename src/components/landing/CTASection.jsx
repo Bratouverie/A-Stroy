@@ -1,9 +1,11 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Phone } from "lucide-react";
+import { Phone, MessageCircle } from "lucide-react";
 import { HERO } from "@/lib/images";
 
 export default function CTASection() {
+  const openChatBot = () => window.dispatchEvent(new Event("open-chatbot"));
+
   return (
     <section className="relative py-24 lg:py-32 overflow-hidden">
       <div className="absolute inset-0">
@@ -19,9 +21,12 @@ export default function CTASection() {
             Консультация бесплатна. Дизайн-проект вам понравится.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="#contacts" className="px-10 py-4 bg-gradient-to-r from-[#D4AF37] to-[#FFD700] text-[#0F1419] font-semibold rounded-lg text-lg hover:shadow-[0_0_30px_rgba(212,175,55,0.4)] transition-all">
-              Получить консультацию
-            </a>
+            <button
+              onClick={openChatBot}
+              className="px-10 py-4 bg-gradient-to-r from-[#D4AF37] to-[#FFD700] text-[#0F1419] font-semibold rounded-lg text-lg hover:shadow-[0_0_30px_rgba(212,175,55,0.4)] transition-all flex items-center justify-center gap-2"
+            >
+              <MessageCircle size={20} /> Начать консультацию
+            </button>
             <a href="tel:+74951234567" className="px-10 py-4 border border-[#D4AF37]/40 text-[#F5F5F5] font-medium rounded-lg flex items-center justify-center gap-2 hover:border-[#D4AF37] transition-all">
               <Phone size={18} />
               Позвонить нам

@@ -8,7 +8,6 @@ export default function Footer() {
     <footer id="contacts" className="bg-[#0A0E27] border-t border-[#D4AF37]/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-          {/* Col 1 - Logo */}
           <div>
             <img src={LOGO} alt="А СТРОЙ" className="h-14 w-auto mb-4" />
             <p className="text-sm text-[#A0A0A0] leading-relaxed">
@@ -16,7 +15,6 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Col 2 - Services */}
           <div>
             <h4 className="text-[#D4AF37] font-semibold mb-4 text-sm tracking-wider uppercase">Услуги</h4>
             <ul className="space-y-2.5">
@@ -27,18 +25,16 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Col 3 - Company */}
           <div>
             <h4 className="text-[#D4AF37] font-semibold mb-4 text-sm tracking-wider uppercase">Компания</h4>
             <ul className="space-y-2.5">
               <li><Link to="/about" className="text-sm text-[#A0A0A0] hover:text-[#D4AF37] transition-colors">О компании</Link></li>
               <li><Link to="/portfolio" className="text-sm text-[#A0A0A0] hover:text-[#D4AF37] transition-colors">Портфолио</Link></li>
               <li><Link to="/blog" className="text-sm text-[#A0A0A0] hover:text-[#D4AF37] transition-colors">Блог</Link></li>
-              <li><Link to="/contacts" className="text-sm text-[#A0A0A0] hover:text-[#D4AF37] transition-colors">Карьера</Link></li>
+              <li><Link to="/crm-info" className="text-sm text-[#A0A0A0] hover:text-[#D4AF37] transition-colors">CRM</Link></li>
             </ul>
           </div>
 
-          {/* Col 4 - Contacts */}
           <div>
             <h4 className="text-[#D4AF37] font-semibold mb-4 text-sm tracking-wider uppercase">Контакты</h4>
             <ul className="space-y-3">
@@ -78,7 +74,7 @@ export default function Footer() {
       <div className="border-t border-[#D4AF37]/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row justify-between items-center gap-3">
           <p className="text-xs text-[#A0A0A0]/60">© 2026 А СТРОЙ. Все права защищены.</p>
-          <a href="#" className="text-xs text-[#A0A0A0]/60 hover:text-[#D4AF37] transition-colors">Политика конфиденциальности</a>
+          <Link to="/privacy-policy" className="text-xs text-[#A0A0A0]/60 hover:text-[#D4AF37] transition-colors">Политика конфиденциальности</Link>
         </div>
       </div>
     </footer>

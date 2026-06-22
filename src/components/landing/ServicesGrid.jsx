@@ -1,7 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight, Home, Paintbrush, TreePine, Building2, Palette, ClipboardCheck } from "lucide-react";
-import { SERVICES } from "@/lib/images";
+import { SERVICES_LANDING } from "@/lib/images";
 
 const items = [
   { title: "Полный ремонт под ключ", desc: "Комплексный ремонт квартир и домов от демонтажа до финишной отделки", icon: Home },
@@ -32,36 +33,41 @@ export default function ServicesGrid() {
           {items.map((item, i) => {
             const Icon = item.icon;
             return (
-              <motion.div
+              <Link
                 key={item.title}
-                initial={{ opacity: 0, y: 30, scale: 0.95 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="group relative overflow-hidden rounded-xl cursor-pointer"
-                style={{ backgroundColor: i % 2 === 0 ? "#1A1F2E" : "#252C3D" }}
+                to="/services"
+                className="block group"
               >
-                <div className="aspect-[5/4] overflow-hidden">
-                  <img
-                    src={SERVICES[i]}
-                    alt={item.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0F1419] via-[#0F1419]/40 to-transparent" />
-                </div>
-                <div className="absolute bottom-0 left-0 right-0 p-6">
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="w-10 h-10 rounded-lg bg-[#D4AF37]/10 border border-[#D4AF37]/30 flex items-center justify-center">
-                      <Icon size={20} className="text-[#D4AF37]" />
-                    </div>
+                <motion.div
+                  initial={{ opacity: 0, y: 30, scale: 0.95 }}
+                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 }}
+                  className="relative overflow-hidden rounded-xl cursor-pointer h-full"
+                  style={{ backgroundColor: i % 2 === 0 ? "#1A1F2E" : "#252C3D" }}
+                >
+                  <div className="aspect-[5/4] overflow-hidden">
+                    <img
+                      src={SERVICES_LANDING[i]}
+                      alt={item.title}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0F1419] via-[#0F1419]/40 to-transparent" />
                   </div>
-                  <h3 className="text-xl font-semibold text-[#F5F5F5] mb-2" style={{ fontFamily: "var(--font-heading)" }}>{item.title}</h3>
-                  <p className="text-sm text-[#A0A0A0] leading-relaxed mb-4">{item.desc}</p>
-                  <span className="text-[#D4AF37] text-sm font-medium flex items-center gap-1 group-hover:gap-2 transition-all">
-                    Подробнее <ArrowRight size={14} />
-                  </span>
-                </div>
-              </motion.div>
+                  <div className="absolute bottom-0 left-0 right-0 p-6">
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className="w-10 h-10 rounded-lg bg-[#D4AF37]/10 border border-[#D4AF37]/30 flex items-center justify-center">
+                        <Icon size={20} className="text-[#D4AF37]" />
+                      </div>
+                    </div>
+                    <h3 className="text-xl font-semibold text-[#F5F5F5] mb-2" style={{ fontFamily: "var(--font-heading)" }}>{item.title}</h3>
+                    <p className="text-sm text-[#A0A0A0] leading-relaxed mb-4">{item.desc}</p>
+                    <span className="text-[#D4AF37] text-sm font-medium flex items-center gap-1 group-hover:gap-2 transition-all">
+                      Подробнее <ArrowRight size={14} />
+                    </span>
+                  </div>
+                </motion.div>
+              </Link>
             );
           })}
         </div>

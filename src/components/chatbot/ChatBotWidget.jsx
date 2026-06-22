@@ -1,7 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MessageCircle, X, Send, Sparkles } from "lucide-react";
+import { MessageCircle, X, Send, RefreshCw } from "lucide-react";
 import { base44 } from "@/api/base44Client";
+import { AVATAR_MARIA, AVATAR_ARTEM } from "@/lib/images";
 
 const QUICK_REPLIES = [
   "Сколько стоит ремонт?",
@@ -10,10 +11,10 @@ const QUICK_REPLIES = [
   "Хочу консультацию",
 ];
 
-const SYSTEM_PROMPT = `Ты — помощник компании "А СТРОЙ", премиум-ремонтной и дизайн-студии в Москве.
+const SYSTEM_PROMPT_MARIA = `Ты — Дизайнер Мария, помощница компании "А СТРОЙ", премиум-ремонтной и дизайн-студии в Москве.
 
 ПРАВИЛА:
-1. Будь дружелюбным и уважительным, используй эмодзи
+1. Будь дружелюбной и уважительной, используй эмодзи, обращайся на "вы"
 2. Отвечай только на вопросы о ремонте, дизайне, сроках, стоимости
 3. НИКОГДА не предлагай эконом-варианты — только премиум
 4. Сообщения должны быть краткими (до 300 символов)
@@ -29,10 +30,29 @@ const SYSTEM_PROMPT = `Ты — помощник компании "А СТРОЙ
 - Сроки: 80-100 кв.м = 2-3 месяца, 100+ кв.м = 3-4 месяца, коттедж 200+ = 4-6 мес
 - Известные клиенты: Анна Бузова, Валя Карнавал, Олег Газманов`;
 
+const SYSTEM_PROMPT_ARTEM = `Ты — Мастер Артем, прораб компании "А СТРОЙ", премиум-ремонтной компании в Москве.
+
+ПРАВИЛА:
+1. Будь профессиональным и надёжным, используй эмодзи, обращайся на "вы"
+2. Отвечай только на вопросы о ремонте, сроках, материалах, технологии работ
+3. НИКОГДА не предлагай эконом-варианты — только премиум
+4. Сообщения должны быть краткими (до 300 символов)
+5. Если не знаешь ответ — предложи консультацию с менеджером
+
+ИНФО О КОМПАНИИ:
+- Специализация: премиум ремонт и отделка
+- Регион: Москва и МО
+- Площадь: от 40 до 900 кв.м
+- Бюджет: от 1 млн ₽
+- Гарантия: 5 лет на работы, 7 лет на люкс
+- Премиум: 30-40 тыс ₽/кв.м, Люкс: 45-60 тыс ₽/кв.м, Эксклюзив: 70+ тыс ₽/кв.м
+- Сроки: 80-100 кв.м = 2-3 месяца, 100+ кв.м = 3-4 месяца, коттедж 200+ = 4-6 мес`;
+
 export default function ChatBotWidget() {
   const [open, setOpen] = useState(false);
+  const [botPersona, setBotPersona] = useState("maria");
   const [messages, setMessages] = useState([
-    { role: "assistant", content: "Привет! 👋 Я ИИ-помощник А СТРОЙ. Отвечу на вопросы про ремонт и дизайн. Что вас интересует?" }
+    { role: "assistant", content: "Привет! 👋 Я Дизайнер Мария, помогу с вопросами про ремонт и дизайн. Что вас интересует?" }
   ]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
@@ -42,9 +62,34 @@ export default function ChatBotWidget() {
   const [submitted, setSubmitted] = useState(false);
   const scrollRef = useRef(null);
 
+  const botName = botPersona === "maria" ? "Дизайнер Мария" : "Мастер Артем";
+  const botAvatar = botPersona === "maria" ? AVATAR_MARIA : AVATAR_ARTEM;
+  const systemPrompt = botPersona === "maria" ? SYSTEM_PROMPT_MARIA : SYSTEM_PROMPT_ARTEM;
+
   useEffect(() => {
     if (scrollRef.current) scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
   }, [messages, loading]);
+
+  useEffect(() => {
+    const handleOpenChatBot = (e) => {
+      setOpen(true);
+      if (e.detail?.message) {
+        setTimeout(() => setInput(e.detail.message), 200);
+      }
+    };
+    window.addEventListener("open-chatbot", handleOpenChatBot);
+    return () => window.removeEventListener("open-chatbot", handleOpenChatBot);
+  }, []);
+
+  const togglePersona = () => {
+    const newPersona = botPersona === "maria" ? "artem" : "maria";
+    setBotPersona(newPersona);
+    const newName = newPersona === "maria" ? "Дизайнер Мария" : "Мастер Артем";
+    setMessages(prev => [...prev, {
+      role: "assistant",
+      content: `👋 Теперь с вами общается ${newName}. Чем могу помочь?`
+    }]);
+  };
 
   const sendMessage = async (text) => {
     if (!text.trim() || loading) return;
@@ -61,26 +106,19 @@ export default function ChatBotWidget() {
         content: m.content
       }));
 
-      const res = await base44.integrations.Core.InvokeLLM({
-        prompt: SYSTEM_PROMPT,
-        model: "gemini_3_flash",
-        response_json_schema: null,
-      });
-
-      // Actually use proper chat completion
       const response = await base44.integrations.Core.InvokeLLM({
-        prompt: `Ты помощник компании А СТРОЙ (премиум ремонт в Москве). ${SYSTEM_PROMPT}\n\nИстория диалога:\n${conversationHistory.map(m => `${m.role}: ${m.content}`).join("\n")}\n\nПользователь: ${text}\n\nОтвет:`,
+        prompt: `${systemPrompt}\n\nИстория диалога:\n${conversationHistory.map(m => `${m.role}: ${m.content}`).join("\n")}\n\nПользователь: ${text}\n\nОтвет:`,
         model: "gemini_3_flash",
       });
 
       const reply = typeof response === "string" ? response : (response?.response || response?.text || JSON.stringify(response));
       setMessages(prev => [...prev, { role: "assistant", content: reply }]);
 
-      if (newCount >= 3 && !showContactForm) {
+      if (newCount >= 1 && !showContactForm) {
         setTimeout(() => {
           setMessages(prev => [...prev, {
             role: "assistant",
-            content: "😊 Чтобы дать точный расчёт и консультацию с дизайнером, оставьте контакты — менеджер позвонит за 30 минут!"
+            content: "😊 Чтобы дать точный расчёт и консультацию, оставьте контакты — менеджер позвонит за 30 минут!"
           }]);
           setShowContactForm(true);
         }, 800);
@@ -105,7 +143,7 @@ export default function ChatBotWidget() {
         status: "received",
         source: "ai_chatbot",
         priority: "medium",
-        notes: `Заявка из ИИ-чата. Вопросы: ${chatSummary}`,
+        notes: `Заявка из ИИ-чата (${botName}). Вопросы: ${chatSummary}`,
       });
       setSubmitted(true);
       setMessages(prev => [...prev, {
@@ -119,7 +157,6 @@ export default function ChatBotWidget() {
 
   return (
     <>
-      {/* Floating button */}
       <motion.button
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
@@ -141,7 +178,6 @@ export default function ChatBotWidget() {
         {!open && <span className="absolute -top-1 -right-1 w-3 h-3 bg-green-400 rounded-full animate-pulse border-2 border-[#0F1419]"></span>}
       </motion.button>
 
-      {/* Chat window */}
       <AnimatePresence>
         {open && (
           <motion.div
@@ -150,20 +186,25 @@ export default function ChatBotWidget() {
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             className="fixed bottom-24 right-5 z-[90] w-[calc(100vw-2.5rem)] sm:w-[380px] h-[520px] max-h-[70vh] bg-[#0F1419] border border-[#D4AF37]/20 rounded-2xl flex flex-col overflow-hidden shadow-2xl"
           >
-            {/* Header */}
             <div className="flex items-center gap-3 p-4 bg-gradient-to-r from-[#1A1F2E] to-[#0F1419] border-b border-[#D4AF37]/10">
-              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#D4AF37] to-[#FFD700] flex items-center justify-center">
-                <Sparkles size={18} className="text-[#0F1419]" />
+              <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-[#D4AF37] flex-shrink-0">
+                <img src={botAvatar} alt={botName} className="w-full h-full object-cover" />
               </div>
-              <div>
-                <p className="text-sm font-semibold text-[#F5F5F5]">ИИ-консультант</p>
+              <div className="flex-1">
+                <p className="text-sm font-semibold text-[#F5F5F5]">{botName}</p>
                 <p className="text-xs text-green-400 flex items-center gap-1">
                   <span className="w-1.5 h-1.5 bg-green-400 rounded-full"></span> Онлайн
                 </p>
               </div>
+              <button
+                onClick={togglePersona}
+                title={`Переключить на ${botPersona === "maria" ? "Мастер Артем" : "Дизайнер Мария"}`}
+                className="w-8 h-8 rounded-full border border-[#D4AF37]/30 text-[#D4AF37] hover:bg-[#D4AF37]/10 transition-colors flex items-center justify-center"
+              >
+                <RefreshCw size={14} />
+              </button>
             </div>
 
-            {/* Messages */}
             <div ref={scrollRef} className="flex-1 overflow-y-auto p-4 space-y-3">
               {messages.map((msg, i) => (
                 <div key={i} className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
@@ -188,7 +229,6 @@ export default function ChatBotWidget() {
                 </div>
               )}
 
-              {/* Quick replies */}
               {messages.length === 1 && !loading && (
                 <div className="flex flex-wrap gap-2 pt-2">
                   {QUICK_REPLIES.map(q => (
@@ -203,7 +243,6 @@ export default function ChatBotWidget() {
                 </div>
               )}
 
-              {/* Contact form */}
               {showContactForm && !submitted && (
                 <div className="bg-[#1A1F2E] border border-[#D4AF37]/20 rounded-xl p-3 space-y-2 mt-2">
                   <input
@@ -234,8 +273,7 @@ export default function ChatBotWidget() {
               )}
             </div>
 
-            {/* Input */}
-            {!showContactForm || submitted ? (
+            {(!showContactForm || submitted) && (
               <div className="p-3 border-t border-[#D4AF37]/10 flex gap-2">
                 <input
                   value={input}
@@ -252,7 +290,7 @@ export default function ChatBotWidget() {
                   <Send size={16} className="text-[#0F1419]" />
                 </button>
               </div>
-            ) : null}
+            )}
           </motion.div>
         )}
       </AnimatePresence>

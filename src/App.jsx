@@ -25,6 +25,8 @@ import ProjectsManagement from './pages/crm/ProjectsManagement';
 import TasksBoard from './pages/crm/TasksBoard';
 import Reports from './pages/crm/Reports';
 import CRMSettings from './pages/crm/Settings';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import CRMInfo from './pages/CRMInfo';
 import ProtectedRoute from '@/components/ProtectedRoute';
 import { Navigate } from 'react-router-dom';
 
@@ -65,6 +67,8 @@ const AuthenticatedApp = () => {
       <Route path="/blog" element={<Blog />} />
       <Route path="/blog/:id" element={<BlogPostPage />} />
       <Route path="/contacts" element={<Contacts />} />
+      <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+      <Route path="/crm-info" element={<CRMInfo />} />
 
       {/* CRM */}
       <Route element={<ProtectedRoute unauthenticatedElement={<Navigate to="/login" replace />} />}>

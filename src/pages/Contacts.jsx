@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Phone, Mail, MapPin, Clock, MessageCircle, Send, ChevronDown, Check } from "lucide-react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
@@ -143,14 +144,14 @@ export default function Contacts() {
                     <option value="cottage">Коттедж</option>
                     <option value="dacha">Дача</option>
                   </select>
-                  <input type="number" value={form.area} onChange={e => setForm({ ...form, area: parseInt(e.target.value) || 0 })} placeholder="Площадь"
+                  <input type="number" value={form.area || ""} onChange={e => setForm({ ...form, area: parseInt(e.target.value) || 0 })} placeholder="Площадь, кв.м" min={40} max={900}
                     className="px-4 py-2.5 bg-[#0F1419] border border-[#D4AF37]/10 rounded-lg text-sm text-[#F5F5F5] focus:outline-none focus:border-[#D4AF37]/40" />
                 </div>
                 <textarea value={form.notes} onChange={e => setForm({ ...form, notes: e.target.value })} placeholder="Комментарий" rows={3}
                   className="w-full px-4 py-2.5 bg-[#0F1419] border border-[#D4AF37]/10 rounded-lg text-sm text-[#F5F5F5] placeholder-[#A0A0A0] focus:outline-none focus:border-[#D4AF37]/40 resize-none" />
                 <label className="flex items-start gap-2 text-xs text-[#A0A0A0] cursor-pointer">
                   <input type="checkbox" checked={agree} onChange={e => setAgree(e.target.checked)} className="mt-0.5 accent-[#D4AF37]" />
-                  <span>Я согласен с обработкой персональных данных и <a href="/privacy" className="text-[#D4AF37] hover:underline">политикой конфиденциальности</a></span>
+                  <span>Я согласен с обработкой персональных данных и <Link to="/privacy-policy" className="text-[#D4AF37] hover:underline">политикой конфиденциальности</Link></span>
                 </label>
                 <button type="submit" disabled={!agree || submitting}
                   className="w-full py-3 bg-gradient-to-r from-[#D4AF37] to-[#FFD700] text-[#0F1419] font-semibold rounded-lg hover:shadow-[0_0_20px_rgba(212,175,55,0.3)] transition-all disabled:opacity-50 disabled:cursor-not-allowed">

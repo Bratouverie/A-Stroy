@@ -1,0 +1,38 @@
+{
+  "name": "Review",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "title": "\u0418\u043c\u044f"
+    },
+    "text": {
+      "type": "string",
+      "title": "\u0422\u0435\u043a\u0441\u0442 \u043e\u0442\u0437\u044b\u0432\u0430"
+    },
+    "rating": {
+      "type": "number",
+      "default": 5,
+      "title": "\u041e\u0446\u0435\u043d\u043a\u0430"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "approved",
+        "rejected"
+      ],
+      "default": "pending",
+      "title": "\u0421\u0442\u0430\u0442\u0443\u0441"
+    },
+    "project": {
+      "type": "string",
+      "title": "\u041f\u0440\u043e\u0435\u043a\u0442"
+    }
+  },
+  "required": [
+    "name",
+    "text",
+    "rating"
+  ]
+}
