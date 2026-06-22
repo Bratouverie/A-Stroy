@@ -1,5 +1,5 @@
 // All extracted image URLs organized by block
-export const LOGO = "https://media.base44.com/images/public/6a3932933a1d1c3db9682aa7/b2f35a56a_Logo2.png";
+export const LOGO = "https://media.base44.com/images/public/6a3932933a1d1c3db9682aa7/95b9b14de_Logo2.png";
 export const LOGO_FAVICON = LOGO;
 
 // Social media share banners (randomized)

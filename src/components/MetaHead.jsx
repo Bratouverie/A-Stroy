@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { getRandomSocialBanner } from "@/lib/social-templates";
+import { getRandomSocialVariant } from "@/lib/social-templates";
 
 /**
  * MetaHead — manages document head meta tags for SEO, OpenGraph, Twitter Cards, and JSON-LD schema.
@@ -14,8 +14,9 @@ import { getRandomSocialBanner } from "@/lib/social-templates";
  * @param {object|object[]} [props.schema] — JSON-LD schema object(s) to inject
  */
 const SITE_NAME = "А СТРОЙ";
-const DEFAULT_DESC = "Премиум ремонт и отделка квартир, домов и коттеджей под ключ в Москве и МО. Площадь 40-900 кв.м, бюджет от 1 млн ₽. Гарантия 5-7 лет.";
-const DEFAULT_OG = getRandomSocialBanner();
+const _socialVariant = getRandomSocialVariant();
+const DEFAULT_DESC = _socialVariant.text;
+const DEFAULT_OG = _socialVariant.image;
 const BASE_URL = "https://a-stroy.ru";
 
 function setMeta(attr, key, content) {
