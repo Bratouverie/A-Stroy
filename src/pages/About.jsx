@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Check } from "lucide-react";
 import PublicLayout from "@/components/layout/PublicLayout";
+import MetaHead from "@/components/MetaHead";
 import { ABOUT, TEAM } from "@/lib/images";
 
 const TEAM_MEMBERS = [
@@ -21,6 +22,12 @@ const VALUES = [
 export default function About() {
   return (
     <PublicLayout>
+      <MetaHead
+        title="О компании | А СТРОЙ"
+        description="А СТРОЙ — премиум ремонтная компания с 8+ летним опытом. 500+ завершённых проектов, 99.8% довольных клиентов. Москва и МО."
+        keywords="о компании, А СТРОЙ, ремонтная компания Москва, история компании"
+        canonical="/about"
+      />
       {/* Banner */}
       <section className="relative h-[40vh] min-h-[300px] flex items-center justify-center">
         <img src={ABOUT.history} alt="О компании" className="absolute inset-0 w-full h-full object-cover" />

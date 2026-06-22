@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin, Clock, MessageCircle, Send } from "lucide-react";
 import { LOGO } from "@/lib/images";
 
@@ -19,9 +20,10 @@ export default function Footer() {
           <div>
             <h4 className="text-[#D4AF37] font-semibold mb-4 text-sm tracking-wider uppercase">Услуги</h4>
             <ul className="space-y-2.5">
-              {["Полный ремонт", "Отделка", "Дизайн интерьера", "Управление проектом"].map(s => (
-                <li key={s}><a href="#services" className="text-sm text-[#A0A0A0] hover:text-[#D4AF37] transition-colors">{s}</a></li>
-              ))}
+              <li><Link to="/services" className="text-sm text-[#A0A0A0] hover:text-[#D4AF37] transition-colors">Полный ремонт</Link></li>
+              <li><Link to="/services" className="text-sm text-[#A0A0A0] hover:text-[#D4AF37] transition-colors">Отделка</Link></li>
+              <li><Link to="/services" className="text-sm text-[#A0A0A0] hover:text-[#D4AF37] transition-colors">Дизайн интерьера</Link></li>
+              <li><Link to="/services" className="text-sm text-[#A0A0A0] hover:text-[#D4AF37] transition-colors">Управление проектом</Link></li>
             </ul>
           </div>
 
@@ -29,9 +31,10 @@ export default function Footer() {
           <div>
             <h4 className="text-[#D4AF37] font-semibold mb-4 text-sm tracking-wider uppercase">Компания</h4>
             <ul className="space-y-2.5">
-              {["О компании", "Портфолио", "Блог", "Карьера"].map(s => (
-                <li key={s}><a href="#about" className="text-sm text-[#A0A0A0] hover:text-[#D4AF37] transition-colors">{s}</a></li>
-              ))}
+              <li><Link to="/about" className="text-sm text-[#A0A0A0] hover:text-[#D4AF37] transition-colors">О компании</Link></li>
+              <li><Link to="/portfolio" className="text-sm text-[#A0A0A0] hover:text-[#D4AF37] transition-colors">Портфолио</Link></li>
+              <li><Link to="/blog" className="text-sm text-[#A0A0A0] hover:text-[#D4AF37] transition-colors">Блог</Link></li>
+              <li><Link to="/contacts" className="text-sm text-[#A0A0A0] hover:text-[#D4AF37] transition-colors">Карьера</Link></li>
             </ul>
           </div>
 

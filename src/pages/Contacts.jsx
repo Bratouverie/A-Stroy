@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Phone, Mail, MapPin, Clock, MessageCircle, Send, ChevronDown, Check } from "lucide-react";
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import "leaflet/dist/leaflet.css";
 import PublicLayout from "@/components/layout/PublicLayout";
+import MetaHead from "@/components/MetaHead";
+import { faqSchema } from "@/lib/schema";
 import { base44 } from "@/api/base44Client";
 import { CONTACTS } from "@/lib/images";
 
@@ -46,6 +50,13 @@ export default function Contacts() {
 
   return (
     <PublicLayout>
+      <MetaHead
+        title="Контакты | А СТРОЙ"
+        description="Свяжитесь с А СТРОЙ — премиум ремонт в Москве. Телефон: 8(495)123-45-67, Email: info@a-stroy.ru. Москва, ул. Тверская, 1. Консультация бесплатна."
+        keywords="контакты, телефон, адрес, А СТРОЙ, ремонт Москва, консультация"
+        canonical="/contacts"
+        schema={faqSchema(FAQ)}
+      />
       {/* Banner */}
       <section className="relative h-[30vh] min-h-[250px] flex items-center justify-center">
         <img src={CONTACTS} alt="Контакты" className="absolute inset-0 w-full h-full object-cover" />
@@ -149,14 +160,36 @@ export default function Contacts() {
             )}
           </div>
 
-          {/* Map placeholder */}
-          <div className="bg-[#1A1F2E] border border-[#D4AF37]/10 rounded-2xl overflow-hidden min-h-[400px] flex items-center justify-center relative">
-            <div className="absolute inset-0 bg-gradient-to-br from-[#1A1F2E] to-[#0F1419] flex items-center justify-center flex-col gap-3">
-              <MapPin size={48} className="text-[#D4AF37]" />
-              <p className="text-[#F5F5F5] font-medium">Москва, ул. Тверская, 1</p>
-              <p className="text-sm text-[#A0A0A0]">м. Охотный ряд — 5 минут пешком</p>
-              <a href="https://maps.google.com/?q=Москва+Тверская+1" target="_blank" rel="noopener" className="mt-3 px-4 py-2 bg-[#D4AF37]/10 border border-[#D4AF37]/30 text-[#D4AF37] text-sm rounded-lg hover:bg-[#D4AF37]/20 transition-colors">
-                Построить маршрут
+          {/* Interactive map */}
+          <div className="bg-[#1A1F2E] border border-[#D4AF37]/10 rounded-2xl overflow-hidden min-h-[400px] relative">
+            <MapContainer
+              center={[55.7558, 37.6173]}
+              zoom={15}
+              scrollWheelZoom={false}
+              style={{ height: "100%", width: "100%", minHeight: "400px" }}
+            >
+              <TileLayer
+                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                attribution='&copy; OpenStreetMap'
+              />
+              <Marker position={[55.7558, 37.6173]}>
+                <Popup>
+                  <strong>А СТРОЙ</strong><br />
+                  ул. Тверская, 1<br />
+                  8(495)123-45-67
+                </Popup>
+              </Marker>
+            </MapContainer>
+            <div className="absolute bottom-4 left-4 right-4 bg-[#0F1419]/90 backdrop-blur-md border border-[#D4AF37]/20 rounded-xl p-4 flex items-center justify-between gap-3 z-[1000]">
+              <div className="flex items-center gap-3">
+                <MapPin size={20} className="text-[#D4AF37] flex-shrink-0" />
+                <div>
+                  <p className="text-sm font-medium text-[#F5F5F5]">Москва, ул. Тверская, 1</p>
+                  <p className="text-xs text-[#A0A0A0]">м. Охотный ряд — 5 минут пешком</p>
+                </div>
+              </div>
+              <a href="https://maps.google.com/?q=Москва+Тверская+1" target="_blank" rel="noopener" className="flex-shrink-0 px-4 py-2 bg-[#D4AF37]/10 border border-[#D4AF37]/30 text-[#D4AF37] text-sm rounded-lg hover:bg-[#D4AF37]/20 transition-colors">
+                Маршрут
               </a>
             </div>
           </div>

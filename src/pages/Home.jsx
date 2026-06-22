@@ -12,6 +12,9 @@ import CalculatorSection from "@/components/landing/CalculatorSection";
 import CTASection from "@/components/landing/CTASection";
 import Footer from "@/components/landing/Footer";
 import ChatBotWidget from "@/components/chatbot/ChatBotWidget";
+import VisitorCounter from "@/components/VisitorCounter";
+import MetaHead from "@/components/MetaHead";
+import { organizationSchema, localBusinessSchema } from "@/lib/schema";
 
 export default function Home() {
   const [splashDone, setSplashDone] = useState(
@@ -20,6 +23,13 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-[#0F1419]">
+      <MetaHead
+        title="А СТРОЙ — премиум ремонт в Москве"
+        description="Премиум ремонт и отделка квартир, домов и коттеджей под ключ в Москве и МО. 500+ проектов, гарантия 5-7 лет. Площадь 40-900 кв.м, бюджет от 1 млн ₽."
+        keywords="ремонт квартир Москва, ремонт под ключ, дизайн интерьера, премиум ремонт, отделка"
+        canonical="/"
+        schema={[organizationSchema, localBusinessSchema]}
+      />
       {!splashDone && <SplashScreen onComplete={() => setSplashDone(true)} />}
       {splashDone && (
         <>
@@ -34,6 +44,8 @@ export default function Home() {
           <CalculatorSection />
           <CTASection />
           <Footer />
+          <ChatBotWidget />
+          <VisitorCounter />
         </>
       )}
     </div>

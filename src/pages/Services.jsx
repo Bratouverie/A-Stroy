@@ -2,6 +2,9 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Check, ArrowRight, Clock, Shield } from "lucide-react";
 import PublicLayout from "@/components/layout/PublicLayout";
+import MetaHead from "@/components/MetaHead";
+import { serviceSchema } from "@/lib/schema";
+import { Link } from "react-router-dom";
 import { SERVICES_PAGE } from "@/lib/images";
 
 const SERVICES = [
@@ -51,6 +54,13 @@ const SERVICES = [
 export default function Services() {
   return (
     <PublicLayout>
+      <MetaHead
+        title="Услуги ремонта и дизайна | А СТРОЙ"
+        description="Полный спектр премиум ремонтно-отделочных работ: полный ремонт под ключ, отделка, дизайн интерьера, ремонт дач и коттеджей. Гарантия 5-7 лет. Москва и МО."
+        keywords="услуги ремонта, ремонт под ключ, отделка, дизайн интерьера, ремонт коттеджа, ремонт дачи"
+        canonical="/services"
+        schema={SERVICES.map(s => serviceSchema(s.title, s.description))}
+      />
       {/* Banner */}
       <section className="relative h-[40vh] min-h-[300px] flex items-center justify-center">
         <img src={SERVICES_PAGE.banner} alt="Услуги" className="absolute inset-0 w-full h-full object-cover" />
@@ -104,9 +114,9 @@ export default function Services() {
                   </div>
                   {s.price && <div className="text-sm text-[#D4AF37] font-medium">{s.price}</div>}
                 </div>
-                <a href="/contacts" className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-[#D4AF37] to-[#FFD700] text-[#0F1419] font-semibold rounded-lg hover:shadow-[0_0_20px_rgba(212,175,55,0.3)] transition-all text-sm">
-                  Получить консультацию <ArrowRight size={16} />
-                </a>
+                <Link to="/contacts" className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-[#D4AF37] to-[#FFD700] text-[#0F1419] font-semibold rounded-lg hover:shadow-[0_0_20px_rgba(212,175,55,0.3)] transition-all text-sm">
+                   Получить консультацию <ArrowRight size={16} />
+                </Link>
               </motion.div>
             </div>
           ))}

@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+Disallow: /crm/
+Disallow: /admin/
+Disallow: /private/
+Disallow: /login
+Disallow: /register
+Disallow: /forgot-password
+Disallow: /reset-password
+
+Sitemap: https://a-stroy.ru/sitemap.xml

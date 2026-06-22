@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import PublicLayout from "@/components/layout/PublicLayout";
+import MetaHead from "@/components/MetaHead";
 import { PORTFOLIO_FEATURED, PORTFOLIO } from "@/lib/images";
 
 const FILTERS = [
@@ -27,6 +29,12 @@ export default function Portfolio() {
 
   return (
     <PublicLayout>
+      <MetaHead
+        title="Портфолио проектов | А СТРОЙ"
+        description={`Портфолио из ${PORTFOLIO.length}+ завершённых проектов премиум-класса. Квартиры, дома, коттеджи в стилях минимализм, лофт, арт-деко, классика. Москва и МО.`}
+        keywords="портфолио ремонта, проекты интерьеров, ремонт квартир, дизайн проекты"
+        canonical="/portfolio"
+      />
       {/* Banner */}
       <section className="relative h-[40vh] min-h-[300px] flex items-center justify-center">
         <img src={PORTFOLIO_FEATURED[0]} alt="Портфолио" className="absolute inset-0 w-full h-full object-cover" />
@@ -68,25 +76,26 @@ export default function Portfolio() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="group relative overflow-hidden rounded-2xl cursor-pointer"
             >
-              <img
-                src={project.image}
-                alt={project.name}
-                className="w-full h-[320px] object-cover group-hover:scale-110 transition-transform duration-700"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0F1419] via-[#0F1419]/30 to-transparent" />
-              <div className="absolute bottom-0 left-0 right-0 p-6 transform group-hover:-translate-y-1 transition-transform">
-                <span className="inline-block px-2.5 py-1 text-xs bg-[#D4AF37]/20 text-[#D4AF37] rounded-full border border-[#D4AF37]/30 mb-3">
-                  {project.category}
-                </span>
-                <h3 className="text-xl font-heading font-semibold text-white mb-1">{project.name}</h3>
-                <p className="text-sm text-[#A0A0A0]">{project.style} · {project.area}</p>
-                <p className="text-sm text-[#D4AF37] mt-1">{project.budget}</p>
-                <div className="flex items-center gap-1 mt-3 text-sm text-white opacity-0 group-hover:opacity-100 transition-opacity">
-                  Смотреть кейс <ArrowRight size={14} />
+              <Link to={`/portfolio/${project.id}`} className="group relative overflow-hidden rounded-2xl cursor-pointer block">
+                <img
+                  src={project.image}
+                  alt={project.name}
+                  className="w-full h-[320px] object-cover group-hover:scale-110 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0F1419] via-[#0F1419]/30 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-6 transform group-hover:-translate-y-1 transition-transform">
+                  <span className="inline-block px-2.5 py-1 text-xs bg-[#D4AF37]/20 text-[#D4AF37] rounded-full border border-[#D4AF37]/30 mb-3">
+                    {project.category}
+                  </span>
+                  <h3 className="text-xl font-heading font-semibold text-white mb-1">{project.name}</h3>
+                  <p className="text-sm text-[#A0A0A0]">{project.style} · {project.area}</p>
+                  <p className="text-sm text-[#D4AF37] mt-1">{project.budget}</p>
+                  <div className="flex items-center gap-1 mt-3 text-sm text-white opacity-0 group-hover:opacity-100 transition-opacity">
+                    Смотреть кейс <ArrowRight size={14} />
+                  </div>
                 </div>
-              </div>
+              </Link>
             </motion.div>
           ))}
         </div>

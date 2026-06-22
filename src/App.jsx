@@ -11,13 +11,26 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import ForgotPassword from './pages/ForgotPassword';
 import ResetPassword from './pages/ResetPassword';
+import Services from './pages/Services';
+import Portfolio from './pages/Portfolio';
+import PortfolioDetail from './pages/PortfolioDetail';
+import About from './pages/About';
+import Blog from './pages/Blog';
+import BlogPostPage from './pages/BlogPostPage';
+import Contacts from './pages/Contacts';
+import CRMLayout from './pages/crm/CRMLayout';
+import Dashboard from './pages/crm/Dashboard';
+import LeadsManagement from './pages/crm/LeadsManagement';
+import ProjectsManagement from './pages/crm/ProjectsManagement';
+import TasksBoard from './pages/crm/TasksBoard';
+import Reports from './pages/crm/Reports';
+import CRMSettings from './pages/crm/Settings';
 import ProtectedRoute from '@/components/ProtectedRoute';
 import { Navigate } from 'react-router-dom';
 
 const AuthenticatedApp = () => {
   const { isLoadingAuth, isLoadingPublicSettings, authError, navigateToLogin } = useAuth();
 
-  // Show loading spinner while checking app public settings or auth
   if (isLoadingPublicSettings || isLoadingAuth) {
     return (
       <div className="fixed inset-0 flex items-center justify-center bg-[#0F1419]">
@@ -26,33 +39,51 @@ const AuthenticatedApp = () => {
     );
   }
 
-  // Handle authentication errors
   if (authError) {
     if (authError.type === 'user_not_registered') {
       return <UserNotRegisteredError />;
     } else if (authError.type === 'auth_required') {
-      // Redirect to login automatically
       navigateToLogin();
       return null;
     }
   }
 
-  // Render the main app
   return (
     <Routes>
+      {/* Auth */}
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path="/forgot-password" element={<ForgotPassword />} />
       <Route path="/reset-password" element={<ResetPassword />} />
+
+      {/* Public */}
       <Route path="/" element={<Home />} />
+      <Route path="/services" element={<Services />} />
+      <Route path="/portfolio" element={<Portfolio />} />
+      <Route path="/portfolio/:projectId" element={<PortfolioDetail />} />
+      <Route path="/about" element={<About />} />
+      <Route path="/blog" element={<Blog />} />
+      <Route path="/blog/:id" element={<BlogPostPage />} />
+      <Route path="/contacts" element={<Contacts />} />
+
+      {/* CRM */}
+      <Route element={<ProtectedRoute unauthenticatedElement={<Navigate to="/login" replace />} />}>
+        <Route element={<CRMLayout />}>
+          <Route path="/crm" element={<Dashboard />} />
+          <Route path="/crm/leads" element={<LeadsManagement />} />
+          <Route path="/crm/projects" element={<ProjectsManagement />} />
+          <Route path="/crm/tasks" element={<TasksBoard />} />
+          <Route path="/crm/reports" element={<Reports />} />
+          <Route path="/crm/settings" element={<CRMSettings />} />
+        </Route>
+      </Route>
+
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   );
 };
 
-
 function App() {
-
   return (
     <AuthProvider>
       <QueryClientProvider client={queryClientInstance}>

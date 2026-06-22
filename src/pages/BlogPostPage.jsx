@@ -3,8 +3,10 @@ import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Clock, ArrowLeft, ArrowRight, Share2 } from "lucide-react";
 import PublicLayout from "@/components/layout/PublicLayout";
+import MetaHead from "@/components/MetaHead";
 import { base44 } from "@/api/base44Client";
 import ReactMarkdown from "react-markdown";
+import { articleSchema } from "@/lib/schema";
 
 export default function BlogPostPage() {
   const { id } = useParams();
@@ -54,6 +56,13 @@ export default function BlogPostPage() {
 
   return (
     <PublicLayout>
+      <MetaHead
+        title={post.title}
+        description={post.excerpt || post.title}
+        ogImage={post.coverImage}
+        canonical={`/blog/${post.id}`}
+        schema={articleSchema(post)}
+      />
       <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
         {/* Back link */}
         <Link to="/blog" className="inline-flex items-center gap-1 text-sm text-[#A0A0A0] hover:text-[#D4AF37] transition-colors mb-6">
@@ -110,12 +119,12 @@ export default function BlogPostPage() {
         <div className="mt-12 p-8 bg-gradient-to-br from-[#1A1F2E] to-[#0F1419] border border-[#D4AF37]/20 rounded-2xl text-center">
           <h3 className="text-xl font-heading font-semibold text-[#F5F5F5] mb-3">Хотите воплотить эти идеи?</h3>
           <p className="text-sm text-[#A0A0A0] mb-5">Получите бесплатную консультацию от нашего дизайнера</p>
-          <a
-            href="/contacts"
+          <Link
+            to="/contacts"
             className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-[#D4AF37] to-[#FFD700] text-[#0F1419] font-semibold rounded-lg hover:shadow-[0_0_20px_rgba(212,175,55,0.3)] transition-all text-sm"
           >
             Получить консультацию <ArrowRight size={16} />
-          </a>
+          </Link>
         </div>
 
         {/* Related */}

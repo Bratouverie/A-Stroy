@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import { Search, Clock, ArrowRight, Mail } from "lucide-react";
 import PublicLayout from "@/components/layout/PublicLayout";
+import MetaHead from "@/components/MetaHead";
 import { base44 } from "@/api/base44Client";
 import { BLOG } from "@/lib/images";
 
@@ -34,6 +36,12 @@ export default function Blog() {
 
   return (
     <PublicLayout>
+      <MetaHead
+        title="Блог о дизайне и ремонте | А СТРОЙ"
+        description="Тренды дизайна интерьера 2026, советы по выбору материалов, планированию ремонта и премиум отделке. Статьи от экспертов А СТРОЙ."
+        keywords="блог о ремонте, тренды дизайна 2026, материалы для ремонта, советы по ремонту"
+        canonical="/blog"
+      />
       {/* Banner */}
       <section className="relative h-[35vh] min-h-[250px] flex items-center justify-center">
         <img src={BLOG[0]} alt="Блог" className="absolute inset-0 w-full h-full object-cover" />
@@ -96,34 +104,34 @@ export default function Blog() {
             ) : filtered.length > 0 ? (
               <div className="grid sm:grid-cols-2 gap-6">
                 {filtered.map((post, i) => (
-                  <motion.article
+                  <motion.div
                     key={post.id}
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.05 }}
-                    className="bg-[#1A1F2E] rounded-2xl overflow-hidden border border-[#D4AF37]/10 hover:border-[#D4AF37]/30 transition-colors group cursor-pointer"
-                    onClick={() => window.location.href = `/blog/${post.id}`}
                   >
-                    {post.coverImage && (
-                      <div className="relative h-48 overflow-hidden">
-                        <img src={post.coverImage} alt={post.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-                      </div>
-                    )}
-                    <div className="p-5">
-                      {post.category && (
-                        <span className="inline-block px-2 py-0.5 text-xs bg-[#D4AF37]/10 text-[#D4AF37] rounded border border-[#D4AF37]/20 mb-3">
-                          {post.category}
-                        </span>
+                    <Link to={`/blog/${post.id}`} className="block bg-[#1A1F2E] rounded-2xl overflow-hidden border border-[#D4AF37]/10 hover:border-[#D4AF37]/30 transition-colors group cursor-pointer">
+                      {post.coverImage && (
+                        <div className="relative h-48 overflow-hidden">
+                          <img src={post.coverImage} alt={post.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                        </div>
                       )}
-                      <h3 className="text-lg font-heading font-semibold text-[#F5F5F5] mb-2 group-hover:text-[#D4AF37] transition-colors">{post.title}</h3>
-                      <p className="text-sm text-[#A0A0A0] line-clamp-2 mb-3">{post.excerpt || ""}</p>
-                      <div className="flex items-center gap-3 text-xs text-[#A0A0A0]">
-                        <span>{post.author || "А СТРОЙ"}</span>
-                        <span className="flex items-center gap-1"><Clock size={12} /> {post.readTime || 5} мин</span>
+                      <div className="p-5">
+                        {post.category && (
+                          <span className="inline-block px-2 py-0.5 text-xs bg-[#D4AF37]/10 text-[#D4AF37] rounded border border-[#D4AF37]/20 mb-3">
+                            {post.category}
+                          </span>
+                        )}
+                        <h3 className="text-lg font-heading font-semibold text-[#F5F5F5] mb-2 group-hover:text-[#D4AF37] transition-colors">{post.title}</h3>
+                        <p className="text-sm text-[#A0A0A0] line-clamp-2 mb-3">{post.excerpt || ""}</p>
+                        <div className="flex items-center gap-3 text-xs text-[#A0A0A0]">
+                          <span>{post.author || "А СТРОЙ"}</span>
+                          <span className="flex items-center gap-1"><Clock size={12} /> {post.readTime || 5} мин</span>
+                        </div>
                       </div>
-                    </div>
-                  </motion.article>
+                    </Link>
+                  </motion.div>
                 ))}
               </div>
             ) : (
