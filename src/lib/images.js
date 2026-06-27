@@ -106,8 +106,9 @@ export const SERVICES_LANDING = [
   SERVICES_PAGE.design,
   WHY_US[3],
 ];
+
 // Block - Engineering Services (новые услуги)
-export const SERVICES_LANDING = [
+export const ENGINEERING_SERVICES_LANDING = [
   "https://base44.app/api/apps/6a3932933a1d1c3db9682aa7/files/mp/public/6a3932933a1d1c3db9682aa7/7938996aa_1-230.png",
   "https://base44.app/api/apps/6a3932933a1d1c3db9682aa7/files/mp/public/6a3932933a1d1c3db9682aa7/598934657_1-231.png",
   "https://base44.app/api/apps/6a3932933a1d1c3db9682aa7/files/mp/public/6a3932933a1d1c3db9682aa7/d6f480b8d_1-232.png",
