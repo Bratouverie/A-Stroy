@@ -5,7 +5,7 @@ import PublicLayout from "@/components/layout/PublicLayout";
 import MetaHead from "@/components/MetaHead";
 import { serviceSchema } from "@/lib/schema";
 import { Link } from "react-router-dom";
-import { SERVICES_PAGE, PORTFOLIO_FEATURED } from "@/lib/images";
+import { SERVICES_PAGE, PORTFOLIO_FEATURED, DACHA_BEFORE, DACHA_AFTER } from "@/lib/images";
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 import { ENGINEERING_SERVICES_DATA } from "@/lib/engineering-services";
 
@@ -91,7 +91,7 @@ export default function Services() {
                 {s.title === "Ремонт дачного дома" ? (
                   <div>
                     <p className="text-sm text-[#D4AF37] mb-3 text-center">👈 Потяните для сравнения «до» и «после»</p>
-                    <BeforeAfterSlider beforeUrl={PORTFOLIO_FEATURED[2]} afterUrl={PORTFOLIO_FEATURED[5]} />
+                    <BeforeAfterSlider beforeUrl={DACHA_BEFORE} afterUrl={DACHA_AFTER} />
                   </div>
                 ) : (
                   <div className="relative group overflow-hidden rounded-2xl">

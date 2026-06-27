@@ -53,7 +53,7 @@ export default function Contacts() {
     <PublicLayout>
       <MetaHead
         title="Контакты | А СТРОЙ"
-        description="Свяжитесь с А СТРОЙ — премиум ремонт в Москве. Телефон: 8(495)123-45-67, Email: info@a-stroy.ru. Москва, ул. Тверская, 1. Консультация бесплатна."
+        description="Свяжитесь с А СТРОЙ — премиум ремонт в Москве. Телефон: +7 (991) 295-91-25, Email: remont@a-stroy.ru. Москва, ул. Тверская, 1. Консультация бесплатна."
         keywords="контакты, телефон, адрес, А СТРОЙ, ремонт Москва, консультация"
         canonical="/contacts"
         schema={faqSchema(FAQ)}
@@ -74,8 +74,8 @@ export default function Contacts() {
       <section className="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {[
-            { icon: Phone, label: "Телефон", value: "8(495)123-45-67", href: "tel:+74951234567" },
-            { icon: Mail, label: "Email", value: "info@a-stroy.ru", href: "mailto:info@a-stroy.ru" },
+            { icon: Phone, label: "Телефон", value: "+7 (991) 295-91-25", href: "tel:+79912959125" },
+            { icon: Mail, label: "Email", value: "remont@a-stroy.ru", href: "mailto:remont@a-stroy.ru" },
             { icon: MapPin, label: "Адрес", value: "Москва, ул. Тверская, 1", href: null },
             { icon: Clock, label: "Часы работы", value: "Пн-Пт 9:00-20:00", href: null },
           ].map((c, i) => (
@@ -102,10 +102,10 @@ export default function Contacts() {
 
         {/* Messengers */}
         <div className="flex justify-center gap-3 mt-8">
-          <a href="https://wa.me/" target="_blank" rel="noopener" className="flex items-center gap-2 px-5 py-2.5 bg-[#1A1F2E] border border-[#D4AF37]/20 rounded-lg text-sm text-[#F5F5F5] hover:border-[#D4AF37]/40 transition-colors">
+          <a href="https://wa.me/79912959125" target="_blank" rel="noopener" className="flex items-center gap-2 px-5 py-2.5 bg-[#1A1F2E] border border-[#D4AF37]/20 rounded-lg text-sm text-[#F5F5F5] hover:border-[#D4AF37]/40 transition-colors">
             <MessageCircle size={16} className="text-[#D4AF37]" /> WhatsApp
           </a>
-          <a href="https://t.me/" target="_blank" rel="noopener" className="flex items-center gap-2 px-5 py-2.5 bg-[#1A1F2E] border border-[#D4AF37]/20 rounded-lg text-sm text-[#F5F5F5] hover:border-[#D4AF37]/40 transition-colors">
+          <a href="https://t.me/pfoffalex" target="_blank" rel="noopener" className="flex items-center gap-2 px-5 py-2.5 bg-[#1A1F2E] border border-[#D4AF37]/20 rounded-lg text-sm text-[#F5F5F5] hover:border-[#D4AF37]/40 transition-colors">
             <Send size={16} className="text-[#D4AF37]" /> Telegram
           </a>
         </div>
@@ -177,7 +177,7 @@ export default function Contacts() {
                 <Popup>
                   <strong>А СТРОЙ</strong><br />
                   ул. Тверская, 1<br />
-                  8(495)123-45-67
+                  +7 (991) 295-91-25
                 </Popup>
               </Marker>
             </MapContainer>

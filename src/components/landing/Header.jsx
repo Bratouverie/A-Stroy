@@ -60,15 +60,15 @@ export default function Header() {
 
           {/* Right side */}
           <div className="flex items-center gap-3">
-            <a href="https://wa.me/" target="_blank" rel="noopener" className="hidden md:flex w-9 h-9 items-center justify-center rounded-full border border-[#D4AF37]/30 text-[#D4AF37] hover:bg-[#D4AF37]/10 transition-colors">
+            <a href="https://wa.me/79912959125" target="_blank" rel="noopener" className="hidden md:flex w-9 h-9 items-center justify-center rounded-full border border-[#D4AF37]/30 text-[#D4AF37] hover:bg-[#D4AF37]/10 transition-colors">
               <MessageCircle size={16} />
             </a>
-            <a href="https://t.me/" target="_blank" rel="noopener" className="hidden md:flex w-9 h-9 items-center justify-center rounded-full border border-[#D4AF37]/30 text-[#D4AF37] hover:bg-[#D4AF37]/10 transition-colors">
+            <a href="https://t.me/pfoffalex" target="_blank" rel="noopener" className="hidden md:flex w-9 h-9 items-center justify-center rounded-full border border-[#D4AF37]/30 text-[#D4AF37] hover:bg-[#D4AF37]/10 transition-colors">
               <Send size={16} />
             </a>
-            <a href="tel:+74951234567" className="hidden md:flex items-center gap-2 text-sm text-[#F5F5F5] hover:text-[#D4AF37] transition-colors">
+            <a href="tel:+79912959125" className="hidden md:flex items-center gap-2 text-sm text-[#F5F5F5] hover:text-[#D4AF37] transition-colors">
               <Phone size={14} />
-              <span>8(495)123-45-67</span>
+              <span>+7 (991) 295-91-25</span>
             </a>
             <Link
               to="/contacts"
@@ -91,13 +91,13 @@ export default function Header() {
               <Link key={n.label} to={n.to} onClick={() => setMenuOpen(false)} className="block w-full text-left text-lg text-[#F5F5F5] hover:text-[#D4AF37]">{n.label}</Link>
             ))}
             <div className="flex gap-3 pt-4">
-              <a href="https://wa.me/" className="flex w-10 h-10 items-center justify-center rounded-full border border-[#D4AF37]/30 text-[#D4AF37]">
+              <a href="https://wa.me/79912959125" className="flex w-10 h-10 items-center justify-center rounded-full border border-[#D4AF37]/30 text-[#D4AF37]">
                 <MessageCircle size={18} />
               </a>
-              <a href="https://t.me/" className="flex w-10 h-10 items-center justify-center rounded-full border border-[#D4AF37]/30 text-[#D4AF37]">
+              <a href="https://t.me/pfoffalex" className="flex w-10 h-10 items-center justify-center rounded-full border border-[#D4AF37]/30 text-[#D4AF37]">
                 <Send size={18} />
               </a>
-              <a href="tel:+74951234567" className="flex w-10 h-10 items-center justify-center rounded-full border border-[#D4AF37]/30 text-[#D4AF37]">
+              <a href="tel:+79912959125" className="flex w-10 h-10 items-center justify-center rounded-full border border-[#D4AF37]/30 text-[#D4AF37]">
                 <Phone size={18} />
               </a>
             </div>

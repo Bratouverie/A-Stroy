@@ -29,13 +29,17 @@ export const SERVICES = [
 
 // Block 1.5 - Featured Projects (from archive 1-3)
 export const PORTFOLIO_FEATURED = [
+  "https://base44.app/api/apps/6a3932933a1d1c3db9682aa7/files/mp/public/6a3932933a1d1c3db9682aa7/21eda241e_1-335.png",
+  "https://base44.app/api/apps/6a3932933a1d1c3db9682aa7/files/mp/public/6a3932933a1d1c3db9682aa7/7189ccf68_1-333.png",
+  "https://base44.app/api/apps/6a3932933a1d1c3db9682aa7/files/mp/public/6a3932933a1d1c3db9682aa7/97b9cdce9_1-332.png",
   "https://base44.app/api/apps/6a3932933a1d1c3db9682aa7/files/mp/public/6a3932933a1d1c3db9682aa7/8c01d647d_1-330.png",
   "https://base44.app/api/apps/6a3932933a1d1c3db9682aa7/files/mp/public/6a3932933a1d1c3db9682aa7/209d6652d_1-331.png",
-  "https://base44.app/api/apps/6a3932933a1d1c3db9682aa7/files/mp/public/6a3932933a1d1c3db9682aa7/97b9cdce9_1-332.png",
-  "https://base44.app/api/apps/6a3932933a1d1c3db9682aa7/files/mp/public/6a3932933a1d1c3db9682aa7/7189ccf68_1-333.png",
   "https://base44.app/api/apps/6a3932933a1d1c3db9682aa7/files/mp/public/6a3932933a1d1c3db9682aa7/82a8b3eb1_1-334.png",
-  "https://base44.app/api/apps/6a3932933a1d1c3db9682aa7/files/mp/public/6a3932933a1d1c3db9682aa7/21eda241e_1-335.png",
 ];
+
+// Dacha before/after images for Services page slider
+export const DACHA_BEFORE = "https://media.base44.com/images/public/6a3932933a1d1c3db9682aa7/2c9a0588b_1.png";
+export const DACHA_AFTER = "https://media.base44.com/images/public/6a3932933a1d1c3db9682aa7/fcebc6ca7_2.png";
 
 // Block 1.4/1.5 - Why Choose Us + Testimonials (from archive 1-4_1-5)
 export const WHY_US = [
@@ -57,7 +61,7 @@ export const SERVICES_PAGE = {
   banner: "https://base44.app/api/apps/6a3932933a1d1c3db9682aa7/files/mp/public/6a3932933a1d1c3db9682aa7/f0e439cd2_Professional_services_page_hero_image_for_Moscow_r-1782103249604.png",
   fullRenovation: "https://base44.app/api/apps/6a3932933a1d1c3db9682aa7/files/mp/public/6a3932933a1d1c3db9682aa7/59ea78e96_Professional_demolition_and_preparation_phase_of_a-1782103252979.png",
   finishing: "https://base44.app/api/apps/6a3932933a1d1c3db9682aa7/files/mp/public/6a3932933a1d1c3db9682aa7/c2226abe0_Premium_finishing_materials_display_for_Moscow_apa-1782103280851.png",
-  dacha: "https://base44.app/api/apps/6a3932933a1d1c3db9682aa7/files/mp/public/6a3932933a1d1c3db9682aa7/666de740a_Traditional_Russian_wooden_dacha_cottage_exterior_-1782103955201.png",
+  dacha: "https://media.base44.com/images/public/6a3932933a1d1c3db9682aa7/fcebc6ca7_2.png",
   cottage: "https://base44.app/api/apps/6a3932933a1d1c3db9682aa7/files/mp/public/6a3932933a1d1c3db9682aa7/578051cbb_Impressive_luxury_two-story_cottage_exterior_after-1782103981830.png",
   design: "https://base44.app/api/apps/6a3932933a1d1c3db9682aa7/files/mp/public/6a3932933a1d1c3db9682aa7/a30e267c4_Professional_flat-lay_photography_of_premium_inter-1782103824003.png",
 };

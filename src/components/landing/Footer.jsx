@@ -43,15 +43,15 @@ export default function Footer() {
                 <span className="text-sm text-[#A0A0A0]">Москва</span>
               </li>
               <li>
-                <a href="tel:+74951234567" className="flex items-center gap-3 text-sm text-[#A0A0A0] hover:text-[#D4AF37] transition-colors">
+                <a href="tel:+79912959125" className="flex items-center gap-3 text-sm text-[#A0A0A0] hover:text-[#D4AF37] transition-colors">
                   <Phone size={16} className="text-[#D4AF37] flex-shrink-0" />
-                  +7 (495) 123-45-67
+                  +7 (991) 295-91-25
                 </a>
               </li>
               <li>
-                <a href="mailto:contact@a-stroy.ru" className="flex items-center gap-3 text-sm text-[#A0A0A0] hover:text-[#D4AF37] transition-colors">
+                <a href="mailto:remont@a-stroy.ru" className="flex items-center gap-3 text-sm text-[#A0A0A0] hover:text-[#D4AF37] transition-colors">
                   <Mail size={16} className="text-[#D4AF37] flex-shrink-0" />
-                  contact@a-stroy.ru
+                  remont@a-stroy.ru
                 </a>
               </li>
               <li className="flex items-center gap-3">
@@ -60,10 +60,10 @@ export default function Footer() {
               </li>
             </ul>
             <div className="flex gap-3 mt-5">
-              <a href="https://wa.me/" target="_blank" rel="noopener" className="w-9 h-9 rounded-full border border-[#D4AF37]/30 flex items-center justify-center text-[#D4AF37] hover:bg-[#D4AF37]/10 transition-colors">
+              <a href="https://wa.me/79912959125" target="_blank" rel="noopener" className="w-9 h-9 rounded-full border border-[#D4AF37]/30 flex items-center justify-center text-[#D4AF37] hover:bg-[#D4AF37]/10 transition-colors">
                 <MessageCircle size={16} />
               </a>
-              <a href="https://t.me/" target="_blank" rel="noopener" className="w-9 h-9 rounded-full border border-[#D4AF37]/30 flex items-center justify-center text-[#D4AF37] hover:bg-[#D4AF37]/10 transition-colors">
+              <a href="https://t.me/pfoffalex" target="_blank" rel="noopener" className="w-9 h-9 rounded-full border border-[#D4AF37]/30 flex items-center justify-center text-[#D4AF37] hover:bg-[#D4AF37]/10 transition-colors">
                 <Send size={16} />
               </a>
             </div>

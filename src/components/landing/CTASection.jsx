@@ -27,7 +27,7 @@ export default function CTASection() {
             >
               <MessageCircle size={20} /> Начать консультацию
             </button>
-            <a href="tel:+74951234567" className="px-10 py-4 border border-[#D4AF37]/40 text-[#F5F5F5] font-medium rounded-lg flex items-center justify-center gap-2 hover:border-[#D4AF37] transition-all">
+            <a href="tel:+79912959125" className="px-10 py-4 border border-[#D4AF37]/40 text-[#F5F5F5] font-medium rounded-lg flex items-center justify-center gap-2 hover:border-[#D4AF37] transition-all">
               <Phone size={18} />
               Позвонить нам
             </a>

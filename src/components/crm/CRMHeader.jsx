@@ -20,9 +20,9 @@ export default function CRMHeader({ user, onToggleSidebar }) {
       </div>
 
       <div className="flex items-center gap-3">
-        <a href="tel:+74951234567" className="flex items-center gap-2 text-sm text-[#A0A0A0] hover:text-[#D4AF37] transition-colors hidden md:flex">
+        <a href="tel:+79912959125" className="flex items-center gap-2 text-sm text-[#A0A0A0] hover:text-[#D4AF37] transition-colors hidden md:flex">
           <Phone size={16} />
-          <span>8(495)123-45-67</span>
+          <span>+7 (991) 295-91-25</span>
         </a>
         <button className="relative w-9 h-9 flex items-center justify-center rounded-lg bg-[#1A1F2E] text-[#A0A0A0] hover:text-[#D4AF37] transition-colors">
           <Bell size={18} />

@@ -126,7 +126,7 @@ export default function ChatBotWidget() {
     } catch (e) {
       setMessages(prev => [...prev, {
         role: "assistant",
-        content: "Извините, произошла ошибка. Позвоните нам: 8(495)123-45-67"
+        content: "Извините, произошла ошибка. Позвоните нам: +7 (991) 295-91-25"
       }]);
     } finally {
       setLoading(false);
