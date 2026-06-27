@@ -106,3 +106,19 @@ export const SERVICES_LANDING = [
   SERVICES_PAGE.design,
   WHY_US[3],
 ];
+// Block - Engineering Services (новые услуги)
+export const SERVICES_LANDING = [
+  "https://base44.app/api/apps/6a3932933a1d1c3db9682aa7/files/mp/public/6a3932933a1d1c3db9682aa7/7938996aa_1-230.png",
+  "https://base44.app/api/apps/6a3932933a1d1c3db9682aa7/files/mp/public/6a3932933a1d1c3db9682aa7/598934657_1-231.png",
+  "https://base44.app/api/apps/6a3932933a1d1c3db9682aa7/files/mp/public/6a3932933a1d1c3db9682aa7/d6f480b8d_1-232.png",
+  "https://base44.app/api/apps/6a3932933a1d1c3db9682aa7/files/mp/public/6a3932933a1d1c3db9682aa7/ad95098a0_1-233.png",
+  "https://base44.app/api/apps/6a3932933a1d1c3db9682aa7/files/mp/public/6a3932933a1d1c3db9682aa7/69ef4cd6c_1-234.png",
+  "https://base44.app/api/apps/6a3932933a1d1c3db9682aa7/files/mp/public/6a3932933a1d1c3db9682aa7/0c4e33ec7_1-235.png",
+];
+
+export const ENGINEERING_SERVICES = [
+  "https://media.base44.com/images/public/6a3f935de179bb7824c2164f/d2cf1e39b_generated_image.png",
+  "https://media.base44.com/images/public/6a3f935de179bb7824c2164f/b09efc82a_generated_image.png",
+  "https://media.base44.com/images/public/6a3f935de179bb7824c2164f/d451402b9_generated_image.png",
+  "https://media.base44.com/images/public/6a3f935de179bb7824c2164f/c89b2eac0_generated_image.png",
+];
