@@ -1,12 +1,15 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Check, ArrowRight, Clock, Shield } from "lucide-react";
+import { Check, ArrowRight, Clock, Shield, Zap, Droplets, Volume2, Thermometer } from "lucide-react";
 import PublicLayout from "@/components/layout/PublicLayout";
 import MetaHead from "@/components/MetaHead";
 import { serviceSchema } from "@/lib/schema";
 import { Link } from "react-router-dom";
 import { SERVICES_PAGE, PORTFOLIO_FEATURED } from "@/lib/images";
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
+import { ENGINEERING_SERVICES_DATA } from "@/lib/engineering-services";
+
+const ICON_MAP = { Zap, Droplets, Volume2, Thermometer };
 
 const SERVICES = [
   {
@@ -128,6 +131,68 @@ export default function Services() {
               </motion.div>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* Engineering services */}
+      <section className="py-16 lg:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto bg-[#0F1419]">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <div className="flex items-center gap-4 mb-6">
+            <div className="flex-1 h-px bg-[#D4AF37]/20" />
+            <span className="text-[#D4AF37] text-sm tracking-[3px] uppercase whitespace-nowrap">Инженерные системы</span>
+            <div className="flex-1 h-px bg-[#D4AF37]/20" />
+          </div>
+          <h2 className="text-3xl lg:text-4xl font-heading font-bold text-[#F5F5F5] mb-4">
+            Основа любого <span className="text-gold-gradient">качественного ремонта</span>
+          </h2>
+          <p className="text-[#A0A0A0] max-w-2xl mx-auto text-lg leading-relaxed">
+            Электрика, сантехника, звукоизоляция и тёплые полы — то, что делает квартиру по-настоящему комфортной. От доступных стандартных решений до премиум-сегмента с материалами RIHAO.
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {ENGINEERING_SERVICES_DATA.map((s, i) => {
+            const Icon = ICON_MAP[s.icon] || Zap;
+            return (
+              <Link key={s.slug} to={`/services/${s.slug}`}>
+                <motion.div
+                  initial={{ opacity: 0, y: 30, scale: 0.95 }}
+                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.08 }}
+                  className="relative overflow-hidden rounded-xl bg-[#1A1F2E] group h-full"
+                >
+                  <div className="absolute top-4 left-4 z-10">
+                    <span className={`px-3 py-1 text-xs font-semibold rounded-full ${s.segment === "Премиум" ? "bg-[#D4AF37] text-[#0F1419]" : "bg-[#252C3D] text-[#D4AF37] border border-[#D4AF37]/30"}`}>
+                      {s.badge}
+                    </span>
+                  </div>
+                  <div className="aspect-[5/3] overflow-hidden">
+                    <img src={s.image} alt={s.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0F1419] via-[#0F1419]/50 to-transparent" />
+                  </div>
+                  <div className="p-6">
+                    <div className="w-10 h-10 rounded-lg bg-[#D4AF37]/10 border border-[#D4AF37]/30 flex items-center justify-center mb-3">
+                      <Icon size={20} className="text-[#D4AF37]" />
+                    </div>
+                    <h3 className="text-lg font-heading font-semibold text-[#F5F5F5] mb-2">{s.title}</h3>
+                    <p className="text-sm text-[#A0A0A0] leading-relaxed mb-4 line-clamp-2">{s.shortDesc}</p>
+                    <div className="flex items-center justify-between">
+                      <span className="text-[#D4AF37] text-sm font-medium">{s.price}</span>
+                      <span className="text-[#D4AF37] text-sm font-medium flex items-center gap-1 group-hover:gap-2 transition-all">
+                        Подробнее <ArrowRight size={14} />
+                      </span>
+                    </div>
+                  </div>
+                </motion.div>
+              </Link>
+            );
+          })}
         </div>
       </section>
     </PublicLayout>

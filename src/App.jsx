@@ -12,6 +12,7 @@ import Register from './pages/Register';
 import ForgotPassword from './pages/ForgotPassword';
 import ResetPassword from './pages/ResetPassword';
 import Services from './pages/Services';
+import EngineeringServiceDetail from './pages/EngineeringServiceDetail';
 import Portfolio from './pages/Portfolio';
 import PortfolioDetail from './pages/PortfolioDetail';
 import About from './pages/About';
@@ -66,6 +67,7 @@ const AuthenticatedApp = () => {
       {/* Public */}
       <Route path="/" element={<Home />} />
       <Route path="/services" element={<Services />} />
+      <Route path="/services/:slug" element={<EngineeringServiceDetail />} />
       <Route path="/portfolio" element={<Portfolio />} />
       <Route path="/portfolio/:projectId" element={<PortfolioDetail />} />
       <Route path="/about" element={<About />} />

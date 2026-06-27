@@ -118,8 +118,16 @@ export const ENGINEERING_SERVICES_LANDING = [
 ];
 
 export const ENGINEERING_SERVICES = [
-  "https://media.base44.com/images/public/6a3f935de179bb7824c2164f/d2cf1e39b_generated_image.png",
-  "https://media.base44.com/images/public/6a3f935de179bb7824c2164f/b09efc82a_generated_image.png",
-  "https://media.base44.com/images/public/6a3f935de179bb7824c2164f/d451402b9_generated_image.png",
-  "https://media.base44.com/images/public/6a3f935de179bb7824c2164f/c89b2eac0_generated_image.png",
+  "https://media.base44.com/images/public/6a3932933a1d1c3db9682aa7/8037b5382_generated_image.png",
+  "https://media.base44.com/images/public/6a3932933a1d1c3db9682aa7/edc00aef7_generated_image.png",
+  "https://media.base44.com/images/public/6a3932933a1d1c3db9682aa7/4a2c6f33e_generated_image.png",
+  "https://media.base44.com/images/public/6a3932933a1d1c3db9682aa7/918136455_generated_image.png",
 ];
+
+// Engineering service detail page images
+export const ENGINEERING_IMG_ELECTRIC = "https://media.base44.com/images/public/6a3932933a1d1c3db9682aa7/8037b5382_generated_image.png";
+export const ENGINEERING_IMG_PLUMBING = "https://media.base44.com/images/public/6a3932933a1d1c3db9682aa7/edc00aef7_generated_image.png";
+export const ENGINEERING_IMG_SOUND = "https://media.base44.com/images/public/6a3932933a1d1c3db9682aa7/4a2c6f33e_generated_image.png";
+export const ENGINEERING_IMG_HEAT = "https://media.base44.com/images/public/6a3932933a1d1c3db9682aa7/918136455_generated_image.png";
+export const ENGINEERING_IMG_ELECTRIC_BASE = "https://media.base44.com/images/public/6a3932933a1d1c3db9682aa7/3c7a1cd47_generated_image.png";
+export const ENGINEERING_IMG_PLUMBING_BASE = "https://media.base44.com/images/public/6a3932933a1d1c3db9682aa7/ac40c30ac_generated_image.png";

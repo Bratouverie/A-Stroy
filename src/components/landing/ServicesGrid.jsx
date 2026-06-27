@@ -15,24 +15,28 @@ const mainItems = [
 
 const engineeringItems = [
   {
+    slug: "electrika-i-avtomatika",
     title: "Электрика и автоматика",
     desc: "Медная проводка европейского стандарта, защита УЗО, умное управление освещением. Гарантия 5 лет.",
     icon: Zap,
     badge: "Премиум",
   },
   {
+    slug: "santehnika-rihao",
     title: "Сантехника RIHAO",
     desc: "Трубы RIHAO (Корея) — без ржавчины, без шума, 50 лет гарантии производителя. Чистая вода навсегда.",
     icon: Droplets,
     badge: "RIHAO",
   },
   {
+    slug: "zvukoizolyaciya",
     title: "Звукоизоляция",
     desc: "Защита от шума соседей, виброизоляция труб. Спите спокойно даже в центре Москвы.",
     icon: Volume2,
     badge: "Хит",
   },
   {
+    slug: "teplye-poly",
     title: "Тёплые полы",
     desc: "Водяные и электрические тёплые полы. Управление со смартфона. Экономия 15–20% на отоплении.",
     icon: Thermometer,
@@ -80,7 +84,7 @@ function ServiceCard({ item, index, image }) {
 function EngineeringCard({ item, index, image }) {
   const Icon = item.icon;
   return (
-    <Link to="/services" className="block group">
+    <Link to={`/services/${item.slug}`} className="block group">
       <motion.div
         initial={{ opacity: 0, y: 30, scale: 0.95 }}
         whileInView={{ opacity: 1, y: 0, scale: 1 }}
