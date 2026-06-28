@@ -29,12 +29,12 @@ export const SERVICES = [
 
 // Block 1.5 - Featured Projects (from archive 1-3)
 export const PORTFOLIO_FEATURED = [
-  "https://base44.app/api/apps/6a3932933a1d1c3db9682aa7/files/mp/public/6a3932933a1d1c3db9682aa7/21eda241e_1-335.png",
   "https://base44.app/api/apps/6a3932933a1d1c3db9682aa7/files/mp/public/6a3932933a1d1c3db9682aa7/7189ccf68_1-333.png",
-  "https://base44.app/api/apps/6a3932933a1d1c3db9682aa7/files/mp/public/6a3932933a1d1c3db9682aa7/97b9cdce9_1-332.png",
-  "https://base44.app/api/apps/6a3932933a1d1c3db9682aa7/files/mp/public/6a3932933a1d1c3db9682aa7/8c01d647d_1-330.png",
-  "https://base44.app/api/apps/6a3932933a1d1c3db9682aa7/files/mp/public/6a3932933a1d1c3db9682aa7/209d6652d_1-331.png",
   "https://base44.app/api/apps/6a3932933a1d1c3db9682aa7/files/mp/public/6a3932933a1d1c3db9682aa7/82a8b3eb1_1-334.png",
+  "https://base44.app/api/apps/6a3932933a1d1c3db9682aa7/files/mp/public/6a3932933a1d1c3db9682aa7/97b9cdce9_1-332.png",
+  "https://base44.app/api/apps/6a3932933a1d1c3db9682aa7/files/mp/public/6a3932933a1d1c3db9682aa7/209d6652d_1-331.png",
+  "https://base44.app/api/apps/6a3932933a1d1c3db9682aa7/files/mp/public/6a3932933a1d1c3db9682aa7/21eda241e_1-335.png",
+  "https://base44.app/api/apps/6a3932933a1d1c3db9682aa7/files/mp/public/6a3932933a1d1c3db9682aa7/8c01d647d_1-330.png",
 ];
 
 // Dacha before/after images for Services page slider

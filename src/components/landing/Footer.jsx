@@ -40,7 +40,7 @@ export default function Footer() {
             <ul className="space-y-3">
               <li className="flex items-start gap-3">
                 <MapPin size={16} className="text-[#D4AF37] mt-0.5 flex-shrink-0" />
-                <span className="text-sm text-[#A0A0A0]">Москва</span>
+                <span className="text-sm text-[#A0A0A0]">г. Москва, Нахимовский проспект, 24с1</span>
               </li>
               <li>
                 <a href="tel:+79912959125" className="flex items-center gap-3 text-sm text-[#A0A0A0] hover:text-[#D4AF37] transition-colors">

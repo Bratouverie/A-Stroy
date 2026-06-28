@@ -119,12 +119,12 @@ export default function BlogPostPage() {
         <div className="mt-12 p-8 bg-gradient-to-br from-[#1A1F2E] to-[#0F1419] border border-[#D4AF37]/20 rounded-2xl text-center">
           <h3 className="text-xl font-heading font-semibold text-[#F5F5F5] mb-3">Хотите воплотить эти идеи?</h3>
           <p className="text-sm text-[#A0A0A0] mb-5">Получите бесплатную консультацию от нашего дизайнера</p>
-          <Link
-            to="/contacts"
+          <button
+            onClick={() => window.dispatchEvent(new Event("open-chatbot"))}
             className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-[#D4AF37] to-[#FFD700] text-[#0F1419] font-semibold rounded-lg hover:shadow-[0_0_20px_rgba(212,175,55,0.3)] transition-all text-sm"
           >
             Получить консультацию <ArrowRight size={16} />
-          </Link>
+          </button>
         </div>
 
         {/* Related */}

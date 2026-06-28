@@ -11,19 +11,18 @@ export const organizationSchema = {
   description: "Премиум ремонт и дизайн интерьера в Москве и Московской области. Полный цикл ремонтно-отделочных работ под ключ.",
   address: {
     "@type": "PostalAddress",
-    streetAddress: "ул. Тверская, 1",
+    streetAddress: "Нахимовский проспект, 24с1",
     addressLocality: "Москва",
     addressRegion: "Московская область",
-    postalCode: "109012",
+    postalCode: "117418",
     addressCountry: "RU",
   },
-  telephone: "+74951234567",
-  email: "info@a-stroy.ru",
+  telephone: "+79912959125",
+  email: "remont@a-stroy.ru",
   foundingDate: "2018",
   sameAs: [
-    "https://vk.com/a-stroy",
-    "https://instagram.com/a-stroy",
-    "https://t.me/a-stroy",
+    "https://t.me/pfoffalex",
+    "https://wa.me/79912959125",
   ],
 };
 
@@ -33,20 +32,20 @@ export const localBusinessSchema = {
   name: "А СТРОЙ",
   image: LOGO_URL,
   url: BASE_URL,
-  telephone: "+74951234567",
+  telephone: "+79912959125",
   priceRange: "₽₽₽",
   address: {
     "@type": "PostalAddress",
-    streetAddress: "ул. Тверская, 1",
+    streetAddress: "Нахимовский проспект, 24с1",
     addressLocality: "Москва",
     addressRegion: "Московская область",
-    postalCode: "109012",
+    postalCode: "117418",
     addressCountry: "RU",
   },
   geo: {
     "@type": "GeoCoordinates",
-    latitude: 55.7558,
-    longitude: 37.6173,
+    latitude: 55.671764,
+    longitude: 37.584506,
   },
   openingHoursSpecification: [
     {
@@ -83,7 +82,7 @@ export const serviceSchema = (name, description) => ({
   provider: {
     "@type": "Organization",
     name: "А СТРОЙ",
-    telephone: "+74951234567",
+    telephone: "+79912959125",
   },
   serviceType: "Ремонт и отделка премиум-класса",
   areaServed: {

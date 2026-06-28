@@ -47,6 +47,7 @@ export default function PortfolioSection() {
                   src={PORTFOLIO_FEATURED[i]}
                   alt={p.title}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0F1419] via-transparent to-transparent opacity-60 group-hover:opacity-90 transition-opacity" />
                 <div className="absolute inset-0 flex flex-col justify-end p-6">

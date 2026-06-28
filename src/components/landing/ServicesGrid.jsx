@@ -22,11 +22,11 @@ const engineeringItems = [
     badge: "Премиум",
   },
   {
-    slug: "santehnika-rihao",
-    title: "Сантехника RIHAO",
-    desc: "Трубы RIHAO (Корея) — без ржавчины, без шума, 50 лет гарантии производителя. Чистая вода навсегда.",
+    slug: "santehnika-rehay",
+    title: "Сантехника REHAY",
+    desc: "Трубы REHAY — без ржавчины, без шума, 50 лет гарантии производителя. Чистая вода навсегда.",
     icon: Droplets,
-    badge: "RIHAO",
+    badge: "REHAY",
   },
   {
     slug: "zvukoizolyaciya",
@@ -61,6 +61,7 @@ function ServiceCard({ item, index, image }) {
             src={image}
             alt={item.title}
             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+            loading="lazy"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#0F1419] via-[#0F1419]/40 to-transparent" />
         </div>
@@ -103,6 +104,7 @@ function EngineeringCard({ item, index, image }) {
             src={image}
             alt={item.title}
             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+            loading="lazy"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#0F1419] via-[#0F1419]/50 to-transparent" />
         </div>

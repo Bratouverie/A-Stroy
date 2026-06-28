@@ -6,6 +6,8 @@ import MetaHead from "@/components/MetaHead";
 import { serviceSchema } from "@/lib/schema";
 import { Link } from "react-router-dom";
 import { SERVICES_PAGE, PORTFOLIO_FEATURED, DACHA_BEFORE, DACHA_AFTER } from "@/lib/images";
+
+const openChatBot = () => window.dispatchEvent(new Event("open-chatbot"));
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 import { ENGINEERING_SERVICES_DATA } from "@/lib/engineering-services";
 
@@ -95,7 +97,7 @@ export default function Services() {
                   </div>
                 ) : (
                   <div className="relative group overflow-hidden rounded-2xl">
-                    <img src={s.image} alt={s.title} className="w-full h-[300px] lg:h-[400px] object-cover group-hover:scale-105 transition-transform duration-700" />
+                    <img src={s.image} alt={s.title} className="w-full h-[300px] lg:h-[400px] object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0F1419]/60 to-transparent" />
                   </div>
                 )}
@@ -125,9 +127,9 @@ export default function Services() {
                   </div>
                   {s.price && <div className="text-sm text-[#D4AF37] font-medium">{s.price}</div>}
                 </div>
-                <Link to="/contacts" className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-[#D4AF37] to-[#FFD700] text-[#0F1419] font-semibold rounded-lg hover:shadow-[0_0_20px_rgba(212,175,55,0.3)] transition-all text-sm">
+                <button onClick={openChatBot} className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-[#D4AF37] to-[#FFD700] text-[#0F1419] font-semibold rounded-lg hover:shadow-[0_0_20px_rgba(212,175,55,0.3)] transition-all text-sm">
                    Получить консультацию <ArrowRight size={16} />
-                </Link>
+                </button>
               </motion.div>
             </div>
           ))}
@@ -151,7 +153,7 @@ export default function Services() {
             Основа любого <span className="text-gold-gradient">качественного ремонта</span>
           </h2>
           <p className="text-[#A0A0A0] max-w-2xl mx-auto text-lg leading-relaxed">
-            Электрика, сантехника, звукоизоляция и тёплые полы — то, что делает квартиру по-настоящему комфортной. От доступных стандартных решений до премиум-сегмента с материалами RIHAO.
+            Электрика, сантехника, звукоизоляция и тёплые полы — то, что делает квартиру по-настоящему комфортной. От доступных стандартных решений до премиум-сегмента с материалами REHAY.
           </p>
         </motion.div>
 
@@ -173,7 +175,7 @@ export default function Services() {
                     </span>
                   </div>
                   <div className="aspect-[5/3] overflow-hidden">
-                    <img src={s.image} alt={s.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                    <img src={s.image} alt={s.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" loading="lazy" />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0F1419] via-[#0F1419]/50 to-transparent" />
                   </div>
                   <div className="p-6">

@@ -108,10 +108,20 @@ export default function ChatBotWidget() {
 
       const response = await base44.integrations.Core.InvokeLLM({
         prompt: `${systemPrompt}\n\nИстория диалога:\n${conversationHistory.map(m => `${m.role}: ${m.content}`).join("\n")}\n\nПользователь: ${text}\n\nОтвет:`,
-        model: "gemini_3_flash",
       });
 
-      const reply = typeof response === "string" ? response : (response?.response || response?.text || JSON.stringify(response));
+      let reply;
+      if (typeof response === "string") {
+        reply = response;
+      } else if (response?.data !== undefined) {
+        reply = typeof response.data === "string" ? response.data : (response.data?.response || response.data?.text || JSON.stringify(response.data));
+      } else if (response?.response) {
+        reply = response.response;
+      } else if (response?.text) {
+        reply = response.text;
+      } else {
+        reply = "Извините, я не смог обработать запрос. Позвоните нам: +7 (991) 295-91-25";
+      }
       setMessages(prev => [...prev, { role: "assistant", content: reply }]);
 
       if (newCount >= 1 && !showContactForm) {

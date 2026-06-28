@@ -84,7 +84,7 @@ export default function EngineeringServiceDetail() {
 
       {/* Hero */}
       <section className="relative h-[50vh] min-h-[360px] flex items-center justify-center">
-        <img src={service.image} alt={service.title} className="absolute inset-0 w-full h-full object-cover" />
+        <img src={service.image} alt={service.title} className="absolute inset-0 w-full h-full object-cover" loading="lazy" />
         <div className="absolute inset-0 bg-gradient-to-b from-[#0F1419]/70 via-[#0F1419]/80 to-[#0F1419]" />
         <div className="relative text-center px-4 max-w-3xl">
           <Link to="/services" className="inline-flex items-center gap-2 text-sm text-[#A0A0A0] hover:text-[#D4AF37] transition-colors mb-6">
@@ -211,14 +211,14 @@ export default function EngineeringServiceDetail() {
                   <span className="text-[#F5F5F5]">{service.warranty}</span>
                 </div>
               </div>
-              <Link
-                to="/contacts"
+              <button
+                onClick={() => window.dispatchEvent(new Event("open-chatbot"))}
                 className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-[#D4AF37] to-[#FFD700] text-[#0F1419] font-semibold rounded-lg hover:shadow-[0_0_20px_rgba(212,175,55,0.3)] transition-all text-sm mb-3"
               >
                 Получить консультацию <ArrowRight size={16} />
-              </Link>
-              <a href="tel:+74951234567" className="w-full flex items-center justify-center gap-2 px-6 py-3 border border-[#D4AF37]/30 text-[#D4AF37] font-semibold rounded-lg hover:bg-[#D4AF37]/10 transition-all text-sm">
-                8 (495) 123-45-67
+              </button>
+              <a href="tel:+79912959125" className="w-full flex items-center justify-center gap-2 px-6 py-3 border border-[#D4AF37]/30 text-[#D4AF37] font-semibold rounded-lg hover:bg-[#D4AF37]/10 transition-all text-sm">
+                +7 (991) 295-91-25
               </a>
             </div>
           </div>
@@ -253,7 +253,7 @@ export default function EngineeringServiceDetail() {
                   className="relative overflow-hidden rounded-xl bg-[#1A1F2E] group h-full"
                 >
                   <div className="aspect-[5/3] overflow-hidden">
-                    <img src={s.image} alt={s.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                    <img src={s.image} alt={s.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0F1419] via-[#0F1419]/40 to-transparent" />
                   </div>
                   <div className="absolute top-4 left-4">

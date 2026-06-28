@@ -43,7 +43,7 @@ const TIERS = {
 const PREMIUM_OPTIONS = [
   { id: "heated-floor", label: "Тёплый пол", price: 150000, icon: Thermometer, tiers: ["standard", "premium", "lux"] },
   { id: "electric", label: "Электрика премиум", price: 70000, icon: Zap, tiers: ["standard", "premium", "lux"] },
-  { id: "rihao", label: "Сантехника Rihao", price: 35000, icon: Droplets, tiers: ["standard", "premium", "lux"] },
+  { id: "rihao", label: "Сантехника REHAY", price: 35000, icon: Droplets, tiers: ["standard", "premium", "lux"] },
   { id: "flooring", label: "Премиум покрытия", price: 45000, icon: Home, tiers: ["premium", "lux"] },
   { id: "smart-home", label: "Умный дом", price: 150000, icon: Zap, tiers: ["premium", "lux"] },
   { id: "spa", label: "Spa-ванная", price: 150000, icon: Droplets, tiers: ["premium", "lux"] },
@@ -162,7 +162,6 @@ export default function CalculatorSection() {
       `Подытог (без резерва): ${fmtFull(estimate.subtotal)}`,
       `Резерв (${estimate.reservePercent}%): ${fmtFull(estimate.reserve)}`,
       `Итого: ${fmtFull(estimate.total)}`,
-      `Сроки: ${timelineMonths}`,
     ];
     return lines.join("\n");
   }, [area, objectType, region, level, timeline, selectedOptions, selectedDesign, estimate, timelineMonths]);
@@ -299,7 +298,7 @@ export default function CalculatorSection() {
                       {fmtShort(estimate.total)}
                     </motion.p>
                     <p className="text-xs text-[#A0A0A0]">{fmtFull(estimate.total)}</p>
-                    <p className="text-xs text-[#A0A0A0] mt-1">~{fmtShort(estimate.perSqm)}/м² · {timelineMonths}</p>
+                    <p className="text-xs text-[#A0A0A0] mt-1">~{fmtShort(estimate.perSqm)}/м²</p>
                   </div>
 
                   {/* Breakdown */}

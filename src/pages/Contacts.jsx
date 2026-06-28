@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Phone, Mail, MapPin, Clock, MessageCircle, Send, ChevronDown, Check } from "lucide-react";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
-import "leaflet/dist/leaflet.css";
+import { Phone, Mail, MapPin, Clock, MessageCircle, Send, ChevronDown, Check, Bot } from "lucide-react";
 import PublicLayout from "@/components/layout/PublicLayout";
 import MetaHead from "@/components/MetaHead";
 import { faqSchema } from "@/lib/schema";
 import { base44 } from "@/api/base44Client";
 import { CONTACTS } from "@/lib/images";
+
+const YANDEX_MAP_EMBED = "https://yandex.ru/map-widget/v1/?ll=37.584505966102945%2C55.67176401937328&z=17.211851&si=mw76r1va4tww8h3n7ntqzbjzr4";
+const YANDEX_NAVI_URL = "https://yandex.ru/navi?whatshere%5Bpoint%5D=37.584505966102945%2C55.67176401975816&whatshere%5Bzoom%5D=17.211851&ll=37.584505966102945%2C55.67176401937328&z=17.211851&si=mw76r1va4tww8h3n7ntqzbjzr4";
 
 const FAQ = [
   { q: "Как рассчитывается стоимость ремонта?", a: "Стоимость зависит от площади, уровня отделки (премиум/люкс/эксклюзив) и состояния помещения. Точную смету менеджер рассчитает после консультации. Ориентировочно: премиум от 30,000 ₽/кв.м, люкс от 45,000 ₽/кв.м." },
@@ -49,18 +50,20 @@ export default function Contacts() {
     }
   };
 
+  const openChatBot = () => window.dispatchEvent(new Event("open-chatbot"));
+
   return (
     <PublicLayout>
       <MetaHead
         title="Контакты | А СТРОЙ"
-        description="Свяжитесь с А СТРОЙ — премиум ремонт в Москве. Телефон: +7 (991) 295-91-25, Email: remont@a-stroy.ru. Москва, ул. Тверская, 1. Консультация бесплатна."
+        description="Свяжитесь с А СТРОЙ — премиум ремонт в Москве. Телефон: +7 (991) 295-91-25, Email: remont@a-stroy.ru. г. Москва, Нахимовский проспект, 24с1. Консультация бесплатна."
         keywords="контакты, телефон, адрес, А СТРОЙ, ремонт Москва, консультация"
         canonical="/contacts"
         schema={faqSchema(FAQ)}
       />
       {/* Banner */}
       <section className="relative h-[30vh] min-h-[250px] flex items-center justify-center">
-        <img src={CONTACTS} alt="Контакты" className="absolute inset-0 w-full h-full object-cover" />
+        <img src={CONTACTS} alt="Контакты" className="absolute inset-0 w-full h-full object-cover" loading="lazy" />
         <div className="absolute inset-0 bg-gradient-to-b from-[#0F1419]/80 to-[#0F1419]" />
         <div className="relative text-center px-4">
           <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-4xl md:text-5xl font-heading font-bold text-gold-gradient mb-3">
@@ -76,7 +79,7 @@ export default function Contacts() {
           {[
             { icon: Phone, label: "Телефон", value: "+7 (991) 295-91-25", href: "tel:+79912959125" },
             { icon: Mail, label: "Email", value: "remont@a-stroy.ru", href: "mailto:remont@a-stroy.ru" },
-            { icon: MapPin, label: "Адрес", value: "Москва, ул. Тверская, 1", href: null },
+            { icon: MapPin, label: "Адрес", value: "Москва, Нахимовский пр-т, 24с1", href: null },
             { icon: Clock, label: "Часы работы", value: "Пн-Пт 9:00-20:00", href: null },
           ].map((c, i) => (
             <motion.div
@@ -101,14 +104,43 @@ export default function Contacts() {
         </div>
 
         {/* Messengers */}
-        <div className="flex justify-center gap-3 mt-8">
+        <div className="flex flex-wrap justify-center gap-3 mt-8">
           <a href="https://wa.me/79912959125" target="_blank" rel="noopener" className="flex items-center gap-2 px-5 py-2.5 bg-[#1A1F2E] border border-[#D4AF37]/20 rounded-lg text-sm text-[#F5F5F5] hover:border-[#D4AF37]/40 transition-colors">
             <MessageCircle size={16} className="text-[#D4AF37]" /> WhatsApp
           </a>
           <a href="https://t.me/pfoffalex" target="_blank" rel="noopener" className="flex items-center gap-2 px-5 py-2.5 bg-[#1A1F2E] border border-[#D4AF37]/20 rounded-lg text-sm text-[#F5F5F5] hover:border-[#D4AF37]/40 transition-colors">
             <Send size={16} className="text-[#D4AF37]" /> Telegram
           </a>
+          <a href="https://max.ru/u/f9LHodD0cOJbEIo7UpJ-BfxHn7FTo203cwn2ztl5DgpbA7Zf7bblQdJiHZQ" target="_blank" rel="noopener" className="flex items-center gap-2 px-5 py-2.5 bg-[#1A1F2E] border border-[#D4AF37]/20 rounded-lg text-sm text-[#F5F5F5] hover:border-[#D4AF37]/40 transition-colors">
+            <MessageCircle size={16} className="text-[#D4AF37]" /> Max
+          </a>
         </div>
+      </section>
+
+      {/* AI Consultant — above the map */}
+      <section className="pb-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="bg-gradient-to-br from-[#1A1F2E] to-[#252C3D] border border-[#D4AF37]/20 rounded-2xl p-6 lg:p-8 flex flex-col sm:flex-row items-center justify-between gap-4"
+        >
+          <div className="flex items-center gap-4">
+            <div className="w-14 h-14 rounded-full bg-[#D4AF37]/10 border border-[#D4AF37]/30 flex items-center justify-center flex-shrink-0">
+              <Bot size={28} className="text-[#D4AF37]" />
+            </div>
+            <div>
+              <h3 className="text-lg font-heading font-semibold text-[#F5F5F5]">ИИ-консультант</h3>
+              <p className="text-sm text-[#A0A0A0]">Задайте вопрос о ремонте, сроках и стоимости — ответим мгновенно</p>
+            </div>
+          </div>
+          <button
+            onClick={openChatBot}
+            className="px-6 py-3 bg-gradient-to-r from-[#D4AF37] to-[#FFD700] text-[#0F1419] font-semibold rounded-lg hover:shadow-[0_0_20px_rgba(212,175,55,0.3)] transition-all text-sm flex items-center gap-2 whitespace-nowrap"
+          >
+            <MessageCircle size={18} /> Открыть чат
+          </button>
+        </motion.div>
       </section>
 
       {/* Form + Map */}
@@ -161,35 +193,24 @@ export default function Contacts() {
             )}
           </div>
 
-          {/* Interactive map */}
+          {/* Yandex Map */}
           <div className="bg-[#1A1F2E] border border-[#D4AF37]/10 rounded-2xl overflow-hidden min-h-[400px] relative">
-            <MapContainer
-              center={[55.7558, 37.6173]}
-              zoom={15}
-              scrollWheelZoom={false}
-              style={{ height: "100%", width: "100%", minHeight: "400px" }}
-            >
-              <TileLayer
-                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                attribution='&copy; OpenStreetMap'
-              />
-              <Marker position={[55.7558, 37.6173]}>
-                <Popup>
-                  <strong>А СТРОЙ</strong><br />
-                  ул. Тверская, 1<br />
-                  +7 (991) 295-91-25
-                </Popup>
-              </Marker>
-            </MapContainer>
+            <iframe
+              src={YANDEX_MAP_EMBED}
+              style={{ width: "100%", height: "100%", minHeight: "400px", border: "none" }}
+              allowFullScreen
+              title="Карта — А СТРОЙ"
+              loading="lazy"
+            />
             <div className="absolute bottom-4 left-4 right-4 bg-[#0F1419]/90 backdrop-blur-md border border-[#D4AF37]/20 rounded-xl p-4 flex items-center justify-between gap-3 z-[1000]">
               <div className="flex items-center gap-3">
                 <MapPin size={20} className="text-[#D4AF37] flex-shrink-0" />
                 <div>
-                  <p className="text-sm font-medium text-[#F5F5F5]">Москва, ул. Тверская, 1</p>
-                  <p className="text-xs text-[#A0A0A0]">м. Охотный ряд — 5 минут пешком</p>
+                  <p className="text-sm font-medium text-[#F5F5F5]">г. Москва, Нахимовский пр-т, 24с1</p>
+                  <p className="text-xs text-[#A0A0A0]">Нахимовский проспект</p>
                 </div>
               </div>
-              <a href="https://maps.google.com/?q=Москва+Тверская+1" target="_blank" rel="noopener" className="flex-shrink-0 px-4 py-2 bg-[#D4AF37]/10 border border-[#D4AF37]/30 text-[#D4AF37] text-sm rounded-lg hover:bg-[#D4AF37]/20 transition-colors">
+              <a href={YANDEX_NAVI_URL} target="_blank" rel="noopener" className="flex-shrink-0 px-4 py-2 bg-[#D4AF37]/10 border border-[#D4AF37]/30 text-[#D4AF37] text-sm rounded-lg hover:bg-[#D4AF37]/20 transition-colors">
                 Маршрут
               </a>
             </div>

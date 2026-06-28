@@ -47,7 +47,7 @@ export default function PrivacyPolicy() {
 
           <section>
             <h2 className="text-xl font-semibold text-[#F5F5F5] mb-3" style={{ fontFamily: "var(--font-heading)" }}>4. Удаление данных</h2>
-            <p>Вы можете запросить удаление ваших персональных данных в любой момент, написав на <a href="mailto:contact@a-stroy.ru" className="text-[#D4AF37] hover:underline">contact@a-stroy.ru</a>. Мы удалим ваши данные в течение 30 дней.</p>
+            <p>Вы можете запросить удаление ваших персональных данных в любой момент, написав на <a href="mailto:remont@a-stroy.ru" className="text-[#D4AF37] hover:underline">remont@a-stroy.ru</a>. Мы удалим ваши данные в течение 30 дней.</p>
           </section>
 
           <section>
@@ -57,8 +57,8 @@ export default function PrivacyPolicy() {
 
           <section>
             <h2 className="text-xl font-semibold text-[#F5F5F5] mb-3" style={{ fontFamily: "var(--font-heading)" }}>6. Контакты</h2>
-            <p>По вопросам обработки персональных данных: <a href="mailto:contact@a-stroy.ru" className="text-[#D4AF37] hover:underline">contact@a-stroy.ru</a></p>
-            <p className="text-sm mt-2">Телефон: <a href="tel:+74951234567" className="text-[#D4AF37]">+7 (495) 123-45-67</a></p>
+            <p>По вопросам обработки персональных данных: <a href="mailto:remont@a-stroy.ru" className="text-[#D4AF37] hover:underline">remont@a-stroy.ru</a></p>
+            <p className="text-sm mt-2">Телефон: <a href="tel:+79912959125" className="text-[#D4AF37]">+7 (991) 295-91-25</a></p>
           </section>
         </div>
 
