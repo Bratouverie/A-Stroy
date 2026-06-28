@@ -153,27 +153,21 @@ export default function ChatBotWidget() {
     setUserMsgCount(newCount);
 
     try {
-      const conversationHistory = messages.map(m => ({
-        role: m.role === "assistant" ? "assistant" : "user",
-        content: m.content
-      }));
+      const conversationHistory = messages
+        .filter(m => !m.content.includes("Чтобы дать точный расчёт") && !m.content.includes("Теперь с вами общается"))
+        .slice(-6)
+        .map(m => ({
+          role: m.role === "assistant" ? "assistant" : "user",
+          content: m.content
+        }));
 
       const response = await base44.integrations.Core.InvokeLLM({
         prompt: `${systemPrompt}\n\nИстория диалога:\n${conversationHistory.map(m => `${m.role}: ${m.content}`).join("\n")}\n\nПользователь: ${text}\n\nОтвет:`,
       });
 
-      let reply;
-      if (typeof response === "string") {
-        reply = response;
-      } else if (response?.data !== undefined) {
-        reply = typeof response.data === "string" ? response.data : (response.data?.response || response.data?.text || JSON.stringify(response.data));
-      } else if (response?.response) {
-        reply = response.response;
-      } else if (response?.text) {
-        reply = response.text;
-      } else {
-        reply = "Извините, я не смог обработать запрос. Позвоните нам: +7 (991) 295-91-25";
-      }
+      const reply = typeof response === "string" ? response
+        : (response?.data ? (typeof response.data === "string" ? response.data : String(response.data))
+        : (response?.response || response?.text || "Извините, я не смог обработать запрос. Позвоните нам: +7 (991) 295-91-25"));
       setMessages(prev => [...prev, { role: "assistant", content: reply }]);
 
       if (newCount >= 1 && !showContactForm) {
@@ -186,6 +180,7 @@ export default function ChatBotWidget() {
         }, 800);
       }
     } catch (e) {
+      console.error("ChatBot InvokeLLM error:", e?.message || e);
       setMessages(prev => [...prev, {
         role: "assistant",
         content: "Извините, произошла ошибка. Позвоните нам: +7 (991) 295-91-25"
