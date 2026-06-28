@@ -6,6 +6,11 @@
       "type": "string",
       "title": "\u0418\u043c\u044f \u0441\u043e\u0442\u0440\u0443\u0434\u043d\u0438\u043a\u0430"
     },
+    "description": {
+      "type": "string",
+      "title": "\u041e\u043f\u0438\u0441\u0430\u043d\u0438\u0435",
+      "maxLength": 1000
+    },
     "role": {
       "type": "string",
       "enum": [
