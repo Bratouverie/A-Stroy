@@ -19,7 +19,7 @@ export default function CRMCodeLogin() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!code.trim()) {
-      setError("Введите секретный код");
+      setError("Введите код доступа");
       return;
     }
 
@@ -27,11 +27,12 @@ export default function CRMCodeLogin() {
     setError("");
 
     try {
-      await crm_auth.loginWithCode(code);
-      await new Promise(resolve => setTimeout(resolve, 400));
-      navigate("/crm");
+      const result = await crm_auth.loginWithCode(code);
+      if (result.success) {
+        navigate("/crm");
+      }
     } catch (err) {
-      setError(err.message);
+      setError(err.message || "Ошибка входа");
       setCode("");
     } finally {
       setLoading(false);
@@ -68,7 +69,7 @@ export default function CRMCodeLogin() {
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-[#A0A0A0] mb-2">Секретный код</label>
+              <label className="block text-sm font-medium text-[#A0A0A0] mb-2">Код доступа</label>
               <motion.input
                 type="text"
                 value={code}
@@ -96,18 +97,18 @@ export default function CRMCodeLogin() {
               whileTap={{ scale: 0.98 }}
               className="w-full py-3 bg-gradient-to-r from-[#D4AF37] to-[#FFD700] text-[#0F1419] font-bold rounded-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
             >
-              {loading ? (<><Loader size={16} className="animate-spin" /> Проверка...</>) : "Войти в панель"}
+              {loading ? (<><Loader size={16} className="animate-spin" /> Проверка...</>) : "Войти"}
             </motion.button>
           </form>
 
           <div className="mt-6 p-4 bg-[#D4AF37]/5 border border-[#D4AF37]/10 rounded-lg">
             <p className="text-xs text-[#A0A0A0] text-center">
-              💡 Не знаете свой код? Обратитесь к администратору для получения персонального кода доступа.
+              💡 Тестовый код: <span className="font-mono font-bold text-[#D4AF37]">ADMIN26</span>
             </p>
           </div>
         </div>
 
-        <p className="text-xs text-[#A0A0A0]/40 text-center mt-6">v1.0</p>
+        <p className="text-xs text-[#A0A0A0]/40 text-center mt-6">v2.0 — надёжный вход</p>
       </motion.div>
     </div>
   );

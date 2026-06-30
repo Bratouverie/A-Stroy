@@ -2,32 +2,36 @@ const STORAGE_KEY = 'crm_user_session';
 
 export const crm_auth = {
   loginWithCode: async (code) => {
+    if (!code || !code.trim()) {
+      throw new Error('Код не может быть пустым');
+    }
+
     try {
       const response = await fetch('/api/crmCodeAuth', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ code })
+        body: JSON.stringify({ code: code.trim().toUpperCase() })
       });
-      
-      if (!response.ok) {
-        throw new Error('Ошибка сервера');
-      }
-      
+
       const data = await response.json();
 
-      if (data && data.success) {
+      if (!response.ok) {
+        throw new Error(data?.message || 'Ошибка авторизации');
+      }
+
+      if (data?.success) {
         localStorage.setItem(STORAGE_KEY, JSON.stringify({
           userId: data.userId,
           name: data.name,
           role: data.role,
           loginTime: Date.now()
         }));
-        return data;
+        return { success: true, data };
       } else {
-        throw new Error(data?.message || 'Неверный код');
+        throw new Error(data?.message || 'Доступ запрещён');
       }
     } catch (error) {
-      throw error;
+      throw new Error(error.message || 'Ошибка подключения к серверу');
     }
   },
 
@@ -50,7 +54,5 @@ export const crm_auth = {
 
   getUserRole: () => {
     return crm_auth.getCurrentUser()?.role || null;
-  },
-
-
+  }
 };
