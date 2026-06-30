@@ -8,7 +8,6 @@ export default function CRMCodeLogin() {
   const [code, setCode] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [attemptsLeft, setAttemptsLeft] = useState(3);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -33,7 +32,6 @@ export default function CRMCodeLogin() {
       navigate("/crm");
     } catch (err) {
       setError(err.message);
-      setAttemptsLeft(crm_auth.getRemainingAttempts());
       setCode("");
     } finally {
       setLoading(false);
@@ -89,10 +87,6 @@ export default function CRMCodeLogin() {
                 <AlertCircle size={16} className="text-red-400 flex-shrink-0 mt-0.5" />
                 <p className="text-sm text-red-400">{error}</p>
               </motion.div>
-            )}
-
-            {attemptsLeft < 3 && !error && (
-              <p className="text-xs text-[#A0A0A0]/60 text-center">Попыток осталось: {attemptsLeft}</p>
             )}
 
             <motion.button

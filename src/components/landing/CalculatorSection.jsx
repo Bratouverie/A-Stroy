@@ -64,7 +64,7 @@ export default function CalculatorSection() {
   const [area, setArea] = useState(30);
   const [objectType, setObjectType] = useState("secondary");
   const [region, setRegion] = useState("mo");
-  const [level, setLevel] = useState("premium");
+  const [level, setLevel] = useState("standard");
   const [timeline, setTimeline] = useState("normal");
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [selectedDesign, setSelectedDesign] = useState(null);
