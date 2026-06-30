@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Lock, AlertCircle, Loader, ArrowLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { base44 } from "@/api/base44Client";
 import { crm_auth } from "@/lib/crm-auth";
 
 export default function CRMCodeLogin() {
@@ -27,12 +28,16 @@ export default function CRMCodeLogin() {
     setError("");
 
     try {
-      const result = await crm_auth.loginWithCode(code);
-      if (result.success) {
+      const response = await base44.functions.invoke('crmCodeAuth', { code: code.trim().toUpperCase() });
+      if (response?.data?.success) {
+        crm_auth.setSession(response.data);
         navigate("/crm");
+      } else {
+        setError(response?.data?.message || "Неверный код доступа");
+        setCode("");
       }
     } catch (err) {
-      setError(err.message || "Ошибка входа");
+      setError(err.message || "Ошибка подключения");
       setCode("");
     } finally {
       setLoading(false);
