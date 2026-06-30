@@ -61,9 +61,9 @@ const fmtShort = (n) => {
 };
 
 export default function CalculatorSection() {
-  const [area, setArea] = useState(100);
+  const [area, setArea] = useState(30);
   const [objectType, setObjectType] = useState("secondary");
-  const [region, setRegion] = useState("moscow");
+  const [region, setRegion] = useState("mo");
   const [level, setLevel] = useState("premium");
   const [timeline, setTimeline] = useState("normal");
   const [selectedOptions, setSelectedOptions] = useState([]);
@@ -108,11 +108,7 @@ export default function CalculatorSection() {
 
     const subtotal = preRegionTotal + extraPrice + designCost - regionDiscount;
     const reserve = subtotal * tier.reserve;
-    let total = subtotal + reserve;
-
-    // Минимум 454 000 ₽
-    const MIN_COST = 454000;
-    if (total < MIN_COST) total = MIN_COST;
+    const total = subtotal + reserve;
 
     return {
       perSqm, baseCost, newBuildMarkup, worksCost, materialsCost,

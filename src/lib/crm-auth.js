@@ -1,8 +1,8 @@
 const STORAGE_KEY = 'crm_user_session';
 const STORAGE_ATTEMPTS = 'crm_code_attempts';
-const MAX_ATTEMPTS = 3;
-const LOCKOUT_TIME = 15 * 60 * 1000;
-const ATTEMPT_DELAY = 500;
+const MAX_ATTEMPTS = 10;
+const LOCKOUT_TIME = 5 * 60 * 1000;
+const ATTEMPT_DELAY = 200;
 
 export const crm_auth = {
   loginWithCode: async (code) => {

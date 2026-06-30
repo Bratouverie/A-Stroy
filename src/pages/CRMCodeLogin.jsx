@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Lock, AlertCircle, Loader } from "lucide-react";
+import { Lock, AlertCircle, Loader, ArrowLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { crm_auth } from "@/lib/crm-auth";
 
@@ -47,6 +47,14 @@ export default function CRMCodeLogin() {
         animate={{ opacity: 1, scale: 1 }}
         className="w-full max-w-sm"
       >
+        <button
+          onClick={() => navigate("/")}
+          className="absolute top-6 left-6 p-2 rounded-lg hover:bg-[#1A1F2E] transition-colors text-[#A0A0A0] hover:text-[#D4AF37]"
+          title="Вернуться на главную"
+        >
+          <ArrowLeft size={24} />
+        </button>
+
         <div className="text-center mb-8">
           <div className="w-16 h-16 mx-auto rounded-full border-2 border-[#D4AF37]/30 flex items-center justify-center mb-4">
             <Lock size={28} className="text-[#D4AF37]" />
