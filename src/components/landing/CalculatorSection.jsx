@@ -108,7 +108,11 @@ export default function CalculatorSection() {
 
     const subtotal = preRegionTotal + extraPrice + designCost - regionDiscount;
     const reserve = subtotal * tier.reserve;
-    const total = subtotal + reserve;
+    let total = subtotal + reserve;
+
+    // Минимум 454 000 ₽
+    const MIN_COST = 454000;
+    if (total < MIN_COST) total = MIN_COST;
 
     return {
       perSqm, baseCost, newBuildMarkup, worksCost, materialsCost,

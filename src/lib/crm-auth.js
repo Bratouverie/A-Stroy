@@ -22,11 +22,16 @@ export const crm_auth = {
       const response = await fetch('/api/crmCodeAuth', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ code: code.toUpperCase().trim() })
+        body: JSON.stringify({ code })
       });
+      
+      if (!response.ok) {
+        throw new Error(`Ошибка сервера: ${response.status}`);
+      }
+      
       const data = await response.json();
 
-      if (data.success) {
+      if (data && data.success) {
         localStorage.setItem(STORAGE_KEY, JSON.stringify({
           userId: data.userId,
           name: data.name,
@@ -35,8 +40,10 @@ export const crm_auth = {
         }));
         localStorage.removeItem(STORAGE_ATTEMPTS);
         return data;
+      } else if (data && data.message) {
+        throw new Error(data.message);
       } else {
-        throw new Error(data.message || 'Неверный код');
+        throw new Error('Ошибка: неверный формат ответа сервера');
       }
     } catch (error) {
       attempts.count++;
